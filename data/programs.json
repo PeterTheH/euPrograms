@@ -1,0 +1,576 @@
+[
+  {
+    "id": "eic-accelerator-2026",
+    "title": "EIC Accelerator 2026",
+    "provider": "European Innovation Council",
+    "geography": "EU and Horizon Europe associated countries",
+    "regionType": "EU",
+    "fundingType": ["Grant", "Blended finance", "Equity"],
+    "amount": "Grant up to EUR 2.5M plus equity investment for scale-up financing",
+    "maxFundingEur": 12500000,
+    "deadline": "2026-07-08",
+    "status": "open",
+    "startupStages": ["Prototype", "MVP", "Early revenue", "Scaleup"],
+    "sectors": ["AI", "SaaS", "Deep tech", "Cybersecurity", "Fintech", "Healthtech", "Climate tech", "Robotics", "Hardware", "R&D"],
+    "difficulty": "Very high",
+    "eligibilitySummary": "Single startups and SMEs with high-risk, high-impact innovations that can scale in Europe and globally.",
+    "description": "A highly competitive EU instrument for breakthrough innovations that need grant support, investment, or blended finance to move from validated technology toward market scale.",
+    "whoCanApply": [
+      "Single startups or SMEs established in an EU Member State or Horizon Europe associated country",
+      "Applicants with a high-risk innovation and credible route to international scale",
+      "Teams able to explain technology, market, IP, and commercialization strategy"
+    ],
+    "whoCannotApply": [
+      "Projects with routine product development and limited innovation risk",
+      "Large companies applying alone",
+      "Companies that cannot show credible ownership or access to the core technology"
+    ],
+    "eligibleCosts": [
+      "Innovation activities close to market",
+      "Prototype validation, pilots, testing, certification, and scale-up preparation",
+      "Commercialization and investment-readiness work where aligned with the call"
+    ],
+    "requiredDocuments": [
+      "Short application form",
+      "Pitch deck",
+      "Full proposal",
+      "Financial plan",
+      "Freedom-to-operate and IP explanation",
+      "Team and company information"
+    ],
+    "evaluationCriteria": [
+      "Breakthrough innovation",
+      "High-risk/high-potential business case",
+      "European and global scalability",
+      "Market disruption and customer validation",
+      "Team capability and implementation plan"
+    ],
+    "applicationFocus": [
+      "Technology readiness level",
+      "Investor risk gap",
+      "IP protection",
+      "Commercialization roadmap",
+      "Market disruption"
+    ],
+    "officialUrl": "https://eic.ec.europa.eu/eic-funding-opportunities_en",
+    "sourceId": "eic",
+    "sourceNotes": "EIC funding page lists Accelerator 2026 as open with 2026 cut-off dates.",
+    "lastChecked": "2026-05-19"
+  },
+  {
+    "id": "eic-step-scale-up-2026",
+    "title": "EIC STEP Scale Up",
+    "provider": "European Innovation Council",
+    "geography": "EU and Horizon Europe associated countries",
+    "regionType": "EU",
+    "fundingType": ["Equity", "Scaleup investment"],
+    "amount": "Equity investments around EUR 10M to EUR 30M to catalyze large funding rounds",
+    "maxFundingEur": 30000000,
+    "deadline": "2026-09-09",
+    "status": "open",
+    "startupStages": ["Scaleup"],
+    "sectors": ["AI", "Deep tech", "Cybersecurity", "Climate tech", "Healthtech", "Robotics", "Hardware"],
+    "difficulty": "Very high",
+    "eligibilitySummary": "Scaleups with strategic deep-tech innovations and investor pre-commitments for large funding rounds.",
+    "description": "A scale-up investment route for companies that can become global leaders in strategic technologies and need major EU-backed equity support.",
+    "whoCanApply": [
+      "High-growth SMEs, startups, small mid-caps, or eligible scaleups",
+      "Companies with strategic technologies and credible investor interest",
+      "Teams preparing large investment rounds"
+    ],
+    "whoCannotApply": [
+      "Idea-stage teams",
+      "Companies without scale-up traction or serious investor engagement",
+      "Projects that are not tied to strategic technology sectors"
+    ],
+    "eligibleCosts": [
+      "Commercial scale-up",
+      "Industrialization and market expansion",
+      "Strategic technology deployment"
+    ],
+    "requiredDocuments": [
+      "Investment case",
+      "Investor pre-commitment evidence",
+      "Scale-up plan",
+      "Financial model",
+      "Technology and market evidence",
+      "Team and governance information"
+    ],
+    "evaluationCriteria": [
+      "Strategic European technology relevance",
+      "Ability to catalyze a larger investment round",
+      "Global leadership potential",
+      "Execution capacity",
+      "Market and investor traction"
+    ],
+    "applicationFocus": [
+      "Investor syndicate",
+      "Strategic autonomy",
+      "Scale-up economics",
+      "Industrial roadmap",
+      "Leadership team"
+    ],
+    "officialUrl": "https://eic.ec.europa.eu/eic-funding-opportunities_en",
+    "sourceId": "eic",
+    "sourceNotes": "EIC funding page lists STEP Scale Up as open with 2026 cut-off dates.",
+    "lastChecked": "2026-05-19"
+  },
+  {
+    "id": "eurostars-september-2026",
+    "title": "Eurostars September 2026 Call",
+    "provider": "Eureka Network / Eurostars",
+    "geography": "Participating Eurostars countries, including Bulgaria through national funding bodies",
+    "regionType": "International",
+    "fundingType": ["Grant", "Collaborative R&D"],
+    "amount": "National funding rates apply; Bulgarian SMEs may receive public support for eligible R&D costs when national budget is available",
+    "maxFundingEur": null,
+    "deadline": "2026-09-10",
+    "status": "upcoming",
+    "startupStages": ["Prototype", "MVP", "Early revenue", "R&D"],
+    "sectors": ["AI", "SaaS", "Deep tech", "Cybersecurity", "Fintech", "Healthtech", "Climate tech", "Robotics", "Hardware", "R&D"],
+    "difficulty": "High",
+    "eligibilitySummary": "Innovative SMEs leading international collaborative R&D projects with partners from participating countries.",
+    "description": "Eurostars funds market-oriented international R&D projects led by innovative SMEs. It is strongest for startups that need cross-border technical collaboration and can define a product, process, or service with commercial potential.",
+    "whoCanApply": [
+      "Innovative SMEs leading an international consortium",
+      "Consortia with independent partners from at least two participating countries",
+      "Projects with civilian, market-oriented R&D and clear commercialization potential"
+    ],
+    "whoCannotApply": [
+      "Applicants without an international partner",
+      "Projects without meaningful R&D work",
+      "Pure sales, distribution, or routine implementation projects"
+    ],
+    "eligibleCosts": [
+      "R&D personnel costs",
+      "Materials and subcontracting where allowed nationally",
+      "Testing, validation, and project management",
+      "Partner-specific costs under national rules"
+    ],
+    "requiredDocuments": [
+      "Eurostars application",
+      "Partner descriptions",
+      "Project work packages",
+      "Commercialization plan",
+      "Budget by partner",
+      "Consortium agreement after approval"
+    ],
+    "evaluationCriteria": [
+      "Quality and efficiency of implementation",
+      "Impact and market potential",
+      "Excellence and innovation",
+      "Consortium quality",
+      "Financial and organizational capacity"
+    ],
+    "applicationFocus": [
+      "Partner logic",
+      "R&D work packages",
+      "International added value",
+      "Commercialization path",
+      "Budget split"
+    ],
+    "officialUrl": "https://www.eurekanetwork.org/programmes/eurostars/apply/",
+    "sourceId": "eureka-eurostars",
+    "sourceNotes": "Eureka publishes Eurostars calls and national funding information by country.",
+    "lastChecked": "2026-05-19"
+  },
+  {
+    "id": "eit-venture-incubation-2026",
+    "title": "EIT Venture Incubation Program",
+    "provider": "European Institute of Innovation and Technology",
+    "geography": "EU and eligible European innovation ecosystems",
+    "regionType": "EU",
+    "fundingType": ["Accelerator", "Startup support"],
+    "amount": "Mentoring, venture-building support, ecosystem access, and possible follow-on opportunities",
+    "maxFundingEur": null,
+    "deadline": "2026-06-09",
+    "status": "open",
+    "startupStages": ["Idea", "Prototype", "MVP"],
+    "sectors": ["AI", "SaaS", "Deep tech", "Digital transformation"],
+    "difficulty": "Medium",
+    "eligibilitySummary": "Early teams and startups developing digital or innovation-led ventures that need incubation and market validation.",
+    "description": "An EIT opportunity suited to early founders who need structured incubation, mentor access, and validation before pursuing larger grants or investment.",
+    "whoCanApply": [
+      "Early-stage startup teams",
+      "Founders with a technology-enabled venture idea",
+      "Teams able to commit to the incubation timeline"
+    ],
+    "whoCannotApply": [
+      "Mature scaleups looking only for large grant funding",
+      "Projects unrelated to innovation or digital business creation",
+      "Teams without a clear problem, customer, or proposed solution"
+    ],
+    "eligibleCosts": [
+      "Incubation activities",
+      "Mentoring and business development",
+      "Market validation support"
+    ],
+    "requiredDocuments": [
+      "Application form",
+      "Founder/team description",
+      "Problem and solution statement",
+      "Market validation evidence",
+      "Development plan"
+    ],
+    "evaluationCriteria": [
+      "Founder commitment",
+      "Problem-solution fit",
+      "Innovation potential",
+      "Market relevance",
+      "Ability to benefit from incubation"
+    ],
+    "applicationFocus": [
+      "Problem clarity",
+      "Customer validation",
+      "Founder-market fit",
+      "Incubation goals"
+    ],
+    "officialUrl": "https://www.eit.europa.eu/our-activities/opportunities",
+    "sourceId": "eit",
+    "sourceNotes": "EIT opportunity listing shows Venture Incubation Program with a 9 June 2026 deadline.",
+    "lastChecked": "2026-05-19"
+  },
+  {
+    "id": "eit-urban-mobility-startups-2026",
+    "title": "EIT Urban Mobility Financial Support To Startups Open Call 2026",
+    "provider": "EIT Urban Mobility",
+    "geography": "EU and Horizon Europe associated countries",
+    "regionType": "EU",
+    "fundingType": ["Accelerator", "Grant", "Startup support", "Equity component"],
+    "amount": "Startup capital and support package for selected urban mobility startups",
+    "maxFundingEur": 2500000,
+    "deadline": "2026-11-16",
+    "status": "open",
+    "startupStages": ["MVP", "Early revenue", "Scaleup"],
+    "sectors": ["AI", "SaaS", "Climate tech", "Robotics", "Hardware", "Digital transformation"],
+    "difficulty": "High",
+    "eligibilitySummary": "European mobility startups with scalable solutions and evidence of pilots, MVP, or market traction.",
+    "description": "A sector-focused EIT route for startups improving urban mobility, logistics, electrification, shared transport, mobility data, and related climate or digital infrastructure.",
+    "whoCanApply": [
+      "Startups incorporated in eligible European countries",
+      "Companies building urban mobility solutions",
+      "Teams with an MVP, pilot, or early traction"
+    ],
+    "whoCannotApply": [
+      "Companies outside the mobility scope",
+      "Pure consulting or non-scalable service projects",
+      "Teams without a product or pilot path"
+    ],
+    "eligibleCosts": [
+      "Startup acceleration and scale-up activities",
+      "Pilots with cities or mobility partners",
+      "Commercial validation and deployment support"
+    ],
+    "requiredDocuments": [
+      "Application form",
+      "Pitch deck",
+      "Product and market evidence",
+      "Pilot or deployment plan",
+      "Financial information",
+      "Team profile"
+    ],
+    "evaluationCriteria": [
+      "Urban mobility impact",
+      "Scalability",
+      "Product readiness",
+      "Team capability",
+      "Commercial and climate relevance"
+    ],
+    "applicationFocus": [
+      "Pilot readiness",
+      "City/customer access",
+      "Mobility impact",
+      "Business model",
+      "Follow-on funding"
+    ],
+    "officialUrl": "https://www.eit.europa.eu/our-activities/opportunities",
+    "sourceId": "eit",
+    "sourceNotes": "EIT opportunity listing shows Financial Support To Startups Open Call 2026 with a 16 November 2026 deadline.",
+    "lastChecked": "2026-05-19"
+  },
+  {
+    "id": "bg-new-models-production-smes-2026",
+    "title": "BG16RFPR001-1.010 New Models in Production by SMEs",
+    "provider": "Bulgarian Ministry of Innovation and Growth / PCIE 2021-2027",
+    "geography": "Bulgaria",
+    "regionType": "Bulgaria",
+    "fundingType": ["Grant"],
+    "amount": "Procedure budget EUR 96.3M; company aid depends on enterprise category and aid regime",
+    "maxFundingEur": null,
+    "deadline": "2026-05-27",
+    "status": "open",
+    "startupStages": ["Early revenue", "Scaleup"],
+    "sectors": ["Hardware", "Robotics", "Digital transformation", "Climate tech", "SaaS", "Cybersecurity"],
+    "difficulty": "Medium",
+    "eligibilitySummary": "Bulgarian micro, small, and medium-sized enterprises introducing new or improved production, process, goods, or service models.",
+    "description": "A Bulgarian grant procedure for SMEs implementing new models in production or business processes. It can fit tech startups with existing revenue and a concrete investment project for software, equipment, patents, designs, or licenses.",
+    "whoCanApply": [
+      "Bulgarian micro, small, and medium-sized enterprises",
+      "Companies registered by the procedure's required reference date",
+      "Applicants with sufficient recent revenue and a project implemented in Bulgaria"
+    ],
+    "whoCannotApply": [
+      "Idea-stage founders without a registered SME",
+      "Applicants without the required sales history",
+      "Projects that do not introduce a new model at company level"
+    ],
+    "eligibleCosts": [
+      "Machinery and equipment",
+      "Software and digital systems",
+      "Patents, utility models, industrial designs, and licenses",
+      "Selected employment costs where allowed by the procedure"
+    ],
+    "requiredDocuments": [
+      "ISUN application form",
+      "Budget and cost justification",
+      "Company financial information",
+      "Project implementation plan",
+      "Declarations and eligibility documents",
+      "Supplier/procurement logic where applicable"
+    ],
+    "evaluationCriteria": [
+      "Fit with Innovation Strategy for Smart Specialisation areas",
+      "Quality of the new product, service, or process model",
+      "Applicant financial capacity",
+      "Implementation readiness",
+      "Regional and competitiveness impact"
+    ],
+    "applicationFocus": [
+      "SME eligibility",
+      "Cost justification",
+      "Implementation timeline",
+      "Supplier logic",
+      "Company-level innovation"
+    ],
+    "officialUrl": "https://eumis2020.government.bg/en/s/Procedure/InfoPublicDiscussion/533f9f35-e4ca-45f7-ab26-bf64efb3da5d",
+    "sourceId": "eumis-bg",
+    "sourceNotes": "ISUN and MIG sources list the procedure under PCIE; public summaries list the current 27 May 2026 deadline.",
+    "lastChecked": "2026-05-19"
+  },
+  {
+    "id": "bg-seal-of-excellence-2026",
+    "title": "BG16RFPR002-1.018 Support for Bulgarian Innovative Enterprises with Seal of Excellence Projects",
+    "provider": "Bulgarian Ministry of Innovation and Growth / RIDST 2021-2027",
+    "geography": "Bulgaria",
+    "regionType": "Bulgaria",
+    "fundingType": ["Grant"],
+    "amount": "National grant support for Bulgarian companies with qualifying Seal of Excellence projects",
+    "maxFundingEur": null,
+    "deadline": "2026-06-22",
+    "status": "open",
+    "startupStages": ["Prototype", "MVP", "Early revenue", "Scaleup"],
+    "sectors": ["AI", "Deep tech", "Cybersecurity", "Fintech", "Healthtech", "Climate tech", "Robotics", "Hardware", "R&D"],
+    "difficulty": "High",
+    "eligibilitySummary": "Bulgarian innovative enterprises with projects that received an EIC Seal of Excellence quality label.",
+    "description": "A Bulgarian national support route for companies whose strong EU innovation proposals received a Seal of Excellence but need national funding to execute the project.",
+    "whoCanApply": [
+      "Bulgarian innovative enterprises",
+      "Applicants holding a relevant Seal of Excellence",
+      "Companies able to implement the project in line with national procedure rules"
+    ],
+    "whoCannotApply": [
+      "Applicants without a qualifying Seal of Excellence",
+      "Projects that materially differ from the awarded proposal",
+      "Companies that fail national eligibility checks"
+    ],
+    "eligibleCosts": [
+      "Project activities consistent with the Seal of Excellence proposal",
+      "R&D and innovation implementation costs",
+      "Eligible national budget categories defined in ISUN documents"
+    ],
+    "requiredDocuments": [
+      "ISUN application form",
+      "Seal of Excellence evidence",
+      "Original EU proposal references",
+      "Budget and eligible cost justification",
+      "Declarations",
+      "Implementation plan"
+    ],
+    "evaluationCriteria": [
+      "Seal of Excellence validity",
+      "National eligibility",
+      "Implementation feasibility",
+      "Budget compliance",
+      "Innovation and impact alignment"
+    ],
+    "applicationFocus": [
+      "Traceability to EIC proposal",
+      "National rule compliance",
+      "Budget logic",
+      "Implementation readiness"
+    ],
+    "officialUrl": "https://eumis2020.government.bg/en/s/Procedure/Info/ec0161e8-54b9-49f5-af7c-83f8288c5896",
+    "sourceId": "eumis-bg",
+    "sourceNotes": "EUMIS page lists the procedure and 22 June 2026 deadline.",
+    "lastChecked": "2026-05-19"
+  },
+  {
+    "id": "bg-startup-visa-2026",
+    "title": "VISA-1.001 Startup Visa Certificate for High-Tech or Innovative Project",
+    "provider": "Bulgarian Ministry of Innovation and Growth / ISUN",
+    "geography": "Bulgaria",
+    "regionType": "Bulgaria",
+    "fundingType": ["Startup visa", "Administrative support"],
+    "amount": "Certificate route supporting long-term residence permit applications; no direct grant funding",
+    "maxFundingEur": null,
+    "deadline": "2029-12-31",
+    "status": "rolling",
+    "startupStages": ["Idea", "Prototype", "MVP", "Early revenue"],
+    "sectors": ["AI", "SaaS", "Deep tech", "Cybersecurity", "Fintech", "Healthtech", "Climate tech", "Robotics", "Hardware", "R&D"],
+    "difficulty": "Medium",
+    "eligibilitySummary": "Non-EU founders seeking a Bulgarian certificate for a high-tech or innovative project as part of a residence pathway.",
+    "description": "A Bulgarian administrative support procedure that certifies high-tech or innovative projects for non-EU founders. It does not provide funding, but it can help foreign founders establish and operate an innovative business in Bulgaria.",
+    "whoCanApply": [
+      "Third-country founders outside the EU",
+      "Founders proposing a high-tech or innovative project in Bulgaria",
+      "Applicants able to submit the required documents through ISUN"
+    ],
+    "whoCannotApply": [
+      "Applicants seeking direct grant funding",
+      "Projects without a credible innovation or high-tech basis",
+      "EU citizens who do not need this residence route"
+    ],
+    "eligibleCosts": [
+      "Not a funding scheme",
+      "Administrative preparation and company setup are the founder's responsibility"
+    ],
+    "requiredDocuments": [
+      "ISUN application",
+      "Project description",
+      "Founder information",
+      "Evidence of high-tech or innovative nature",
+      "Business and implementation plan",
+      "Supporting declarations"
+    ],
+    "evaluationCriteria": [
+      "High-tech or innovative project quality",
+      "Founder capacity",
+      "Implementation in Bulgaria",
+      "Business credibility",
+      "Administrative eligibility"
+    ],
+    "applicationFocus": [
+      "Innovation evidence",
+      "Bulgarian establishment plan",
+      "Founder capability",
+      "Technology and R&D substance"
+    ],
+    "officialUrl": "https://eumis2020.government.bg/en/s/Procedure/Info/2c891513-0493-4658-823a-56fe215e0e0e",
+    "sourceId": "eumis-bg",
+    "sourceNotes": "EUMIS page lists application period from 2 January 2026 to 31 December 2029.",
+    "lastChecked": "2026-05-19"
+  },
+  {
+    "id": "bg-digitalization-enterprises-2025",
+    "title": "BG16RFPR001-1.012 Digitalization of Enterprises",
+    "provider": "Bulgarian Ministry of Innovation and Growth / PCIE 2021-2027",
+    "geography": "Bulgaria",
+    "regionType": "Bulgaria",
+    "fundingType": ["Grant"],
+    "amount": "BGN 5,000 to BGN 50,000 grant aid, up to 70 percent intensity",
+    "maxFundingEur": 25565,
+    "deadline": "2025-09-26",
+    "status": "closed",
+    "startupStages": ["Early revenue", "Scaleup"],
+    "sectors": ["SaaS", "Cybersecurity", "Digital transformation", "AI"],
+    "difficulty": "Low",
+    "eligibilitySummary": "Closed Bulgarian procedure for micro and small enterprises investing in ICT, digital marketing, ERP, CRM, and cybersecurity solutions.",
+    "description": "A closed but useful reference procedure for Bulgarian digitalization grants. Similar future calls are likely to require clear SME eligibility, specific ICT purchases, and simple cost justification.",
+    "whoCanApply": [
+      "Bulgarian micro and small enterprises meeting the procedure rules",
+      "Companies purchasing eligible ICT and digitalization solutions",
+      "Applicants able to apply through ISUN before the deadline"
+    ],
+    "whoCannotApply": [
+      "Companies outside Bulgaria",
+      "Medium or large enterprises if excluded by the procedure",
+      "Projects without eligible ICT or cybersecurity/digitalization activity"
+    ],
+    "eligibleCosts": [
+      "ERP and CRM systems",
+      "Digital marketing tools",
+      "Cybersecurity solutions",
+      "Production, logistics, and management process optimization tools"
+    ],
+    "requiredDocuments": [
+      "ISUN application",
+      "Budget and selected cost units",
+      "Company eligibility declarations",
+      "Implementation plan",
+      "Supplier and solution description"
+    ],
+    "evaluationCriteria": [
+      "SME eligibility",
+      "Fit of ICT solution to business needs",
+      "Cost compliance",
+      "Implementation feasibility",
+      "Digitalization impact"
+    ],
+    "applicationFocus": [
+      "Cost unit mapping",
+      "Supplier logic",
+      "Digitalization readiness",
+      "Cybersecurity need"
+    ],
+    "officialUrl": "https://www.mig.government.bg/programa-konkurentosposobnost-i-inovaczii-v-predpriyatiyata/novini-proczeduri-pkip/bg16rfpr001-1-012-digitalizacziya-na-predpriyatiyata/",
+    "sourceId": "mig-pcie",
+    "sourceNotes": "MIG page tracks contracts and documents; public summaries list the 26 September 2025 deadline.",
+    "lastChecked": "2026-05-19"
+  },
+  {
+    "id": "bg-small-innovative-grants-2025",
+    "title": "BG16RFPR002-1.005 Small Innovative Grants for SMEs",
+    "provider": "Bulgarian Ministry of Innovation and Growth / RIDST 2021-2027",
+    "geography": "Bulgaria",
+    "regionType": "Bulgaria",
+    "fundingType": ["Grant", "Innovation voucher"],
+    "amount": "Fixed grant BGN 14,710 for one service or BGN 29,420 for two services",
+    "maxFundingEur": 15042,
+    "deadline": "2025-03-28",
+    "status": "closed",
+    "startupStages": ["Prototype", "MVP", "Early revenue"],
+    "sectors": ["AI", "SaaS", "Deep tech", "Cybersecurity", "Healthtech", "Climate tech", "Hardware", "R&D"],
+    "difficulty": "Low",
+    "eligibilitySummary": "Closed Bulgarian fixed-grant route for SMEs buying science-intensive innovation services from eligible knowledge providers.",
+    "description": "A reference procedure for Bulgarian SMEs needing focused help from universities, research organizations, competence centers, Sofia Tech Park R&D association, or scientific infrastructure providers.",
+    "whoCanApply": [
+      "Bulgarian micro, small, and medium-sized enterprises",
+      "Companies needing innovation services from eligible knowledge providers",
+      "Applicants with a defined technological or business-model problem"
+    ],
+    "whoCannotApply": [
+      "Companies without SME status",
+      "Applicants seeking general consulting unrelated to innovation",
+      "Projects without an eligible knowledge provider"
+    ],
+    "eligibleCosts": [
+      "Science-intensive services",
+      "Prototype and technological problem-solving services",
+      "New product, process, service, or business-model support"
+    ],
+    "requiredDocuments": [
+      "ISUN application",
+      "Service description",
+      "Knowledge provider selection",
+      "Declarations",
+      "Implementation information"
+    ],
+    "evaluationCriteria": [
+      "SME eligibility",
+      "Relevance of requested innovation service",
+      "Eligible provider fit",
+      "Procedure compliance",
+      "Expected innovation result"
+    ],
+    "applicationFocus": [
+      "Knowledge provider fit",
+      "Problem definition",
+      "Innovation output",
+      "SME compliance"
+    ],
+    "officialUrl": "https://www.mig.government.bg/programa-nauchni-izsledvaniya-inovaczii-i-digitalizacziya-za-inteligentna-transformacziya/",
+    "sourceId": "mig-ridst",
+    "sourceNotes": "MIG programme page lists BG16RFPR002-1.005 under R&I and Digitalisation for Smart Transformation.",
+    "lastChecked": "2026-05-19"
+  }
+]

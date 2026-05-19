@@ -1,0 +1,79 @@
+[
+  {
+    "id": "eu-funding-tenders",
+    "name": "EU Funding & Tenders Portal",
+    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/calls-for-proposals",
+    "method": "Structured portal search endpoint and official portal pages",
+    "lastChecked": "2026-05-19",
+    "status": "seeded",
+    "newPrograms": 0,
+    "lastError": "",
+    "notes": "Use official portal APIs or public search pages where available. Avoid high-rate scraping."
+  },
+  {
+    "id": "eic",
+    "name": "European Innovation Council",
+    "url": "https://eic.ec.europa.eu/eic-funding-opportunities_en",
+    "method": "Official HTML page",
+    "lastChecked": "2026-05-19",
+    "status": "ok",
+    "newPrograms": 0,
+    "lastError": "",
+    "notes": "Tracks EIC Accelerator, STEP Scale Up, Pathfinder, Transition, and Pre-Accelerator calls."
+  },
+  {
+    "id": "eit",
+    "name": "European Institute of Innovation and Technology",
+    "url": "https://www.eit.europa.eu/our-activities/opportunities",
+    "method": "Official opportunities listing",
+    "lastChecked": "2026-05-19",
+    "status": "ok",
+    "newPrograms": 0,
+    "lastError": "",
+    "notes": "Tracks EIT Community startup, accelerator, and innovation opportunities."
+  },
+  {
+    "id": "eureka-eurostars",
+    "name": "Eureka / Eurostars",
+    "url": "https://www.eurekanetwork.org/programmes/eurostars/apply/",
+    "method": "Official call pages and national funding information",
+    "lastChecked": "2026-05-19",
+    "status": "ok",
+    "newPrograms": 0,
+    "lastError": "",
+    "notes": "Tracks Eurostars collaborative R&D calls and country-specific funding rules."
+  },
+  {
+    "id": "eumis-bg",
+    "name": "ISUN / EUMIS Bulgaria",
+    "url": "https://eumis2020.government.bg/en/s/Procedure/List",
+    "method": "Official procedure pages",
+    "lastChecked": "2026-05-19",
+    "status": "ok",
+    "newPrograms": 0,
+    "lastError": "",
+    "notes": "Public platform for EU-funds-related procedures in Bulgaria."
+  },
+  {
+    "id": "mig-pcie",
+    "name": "Bulgarian Ministry of Innovation and Growth - PCIE",
+    "url": "https://www.mig.government.bg/programa-konkurentosposobnost-i-inovaczii-v-predpriyatiyata/",
+    "method": "Official programme page",
+    "lastChecked": "2026-05-19",
+    "status": "ok",
+    "newPrograms": 0,
+    "lastError": "",
+    "notes": "Competitiveness and Innovation in Enterprises 2021-2027."
+  },
+  {
+    "id": "mig-ridst",
+    "name": "Bulgarian Ministry of Innovation and Growth - RIDST",
+    "url": "https://www.mig.government.bg/programa-nauchni-izsledvaniya-inovaczii-i-digitalizacziya-za-inteligentna-transformacziya/",
+    "method": "Official programme page",
+    "lastChecked": "2026-05-19",
+    "status": "ok",
+    "newPrograms": 0,
+    "lastError": "",
+    "notes": "Research, Innovation and Digitalisation for Smart Transformation 2021-2027."
+  }
+]
