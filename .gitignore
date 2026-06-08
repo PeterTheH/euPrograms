@@ -12,3 +12,4 @@ pnpm-debug.log*
 *.tsbuildinfo
 .next-dev.out.log
 .next-dev.err.log
+.claude/settings.local.json

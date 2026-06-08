@@ -270,7 +270,8 @@ h1 {
 }
 
 input,
-select {
+select,
+textarea {
   width: 100%;
   min-height: 42px;
   border: 1px solid var(--line);
@@ -280,8 +281,15 @@ select {
   padding: 9px 11px;
 }
 
+textarea {
+  resize: vertical;
+  font: inherit;
+  line-height: 1.55;
+}
+
 input:focus,
 select:focus,
+textarea:focus,
 button:focus-visible,
 a:focus-visible {
   outline: 3px solid rgba(36, 88, 211, 0.22);
@@ -669,6 +677,14 @@ a:focus-visible {
   gap: 10px;
 }
 
+.form-hint {
+  grid-column: 1 / -1;
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
 .checker-output {
   display: grid;
   gap: 16px;
@@ -751,6 +767,66 @@ a:focus-visible {
   gap: 8px;
   border-top: 1px solid var(--line);
   padding-top: 12px;
+}
+
+.section-guidance {
+  font-size: 13px;
+}
+
+.section-answer {
+  min-height: 120px;
+}
+
+.section-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.section-actions .button {
+  min-height: 34px;
+  font-size: 13px;
+  padding: 6px 11px;
+}
+
+.section-review {
+  display: grid;
+  gap: 12px;
+  border-left: 3px solid var(--blue);
+  background: var(--surface-soft);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.review-block {
+  display: grid;
+  gap: 4px;
+}
+
+.review-block h5,
+.review-rewrite h5 {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.review-block ul {
+  margin: 0;
+}
+
+.review-rewrite {
+  display: grid;
+  gap: 8px;
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+}
+
+.review-rewrite p {
+  margin: 0;
+  white-space: pre-wrap;
+  line-height: 1.55;
 }
 
 .checklist {

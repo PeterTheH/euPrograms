@@ -27,8 +27,14 @@ export function SaveProgramButton({ programId }: { programId: string }) {
   }
 
   return (
-    <button className="button secondary" type="button" onClick={toggleSaved}>
-      {saved ? t("common.saved") : t("common.save")}
+    <button
+      className="button secondary"
+      type="button"
+      onClick={toggleSaved}
+      aria-pressed={saved}
+      title={saved ? t("common.unsave") : t("common.save")}
+    >
+      {saved ? t("common.unsave") : t("common.save")}
     </button>
   );
 }

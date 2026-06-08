@@ -2,7 +2,15 @@
 
 import { useMemo, useState } from "react";
 import { useLanguage } from "./LanguageProvider";
-import type { ApplicationPack, EligibilityResult, FounderProfile, Program } from "@/lib/types";
+import type {
+  ApplicationPack,
+  DocumentSection,
+  EligibilityResult,
+  FounderProfile,
+  Program,
+  SectionDraftResult,
+  SectionReviewResult
+} from "@/lib/types";
 
 const initialProfile: FounderProfile = {
   companyCountry: "",
@@ -15,7 +23,8 @@ const initialProfile: FounderProfile = {
   fundingNeed: "",
   applicationMode: "",
   previousEuFunding: "",
-  projectType: ""
+  projectType: "",
+  projectDescription: ""
 };
 
 export function EligibilityFlow({
@@ -94,6 +103,10 @@ export function EligibilityFlow({
     setProfile((current) => ({ ...current, [key]: value }));
     setEligibility(null);
     setPack(null);
+  }
+
+  function updateDescription(value: string) {
+    setProfile((current) => ({ ...current, projectDescription: value }));
   }
 
   return (
@@ -185,6 +198,16 @@ export function EligibilityFlow({
           onChange={(value) => updateProfile("projectType", value as FounderProfile["projectType"])}
         />
 
+        <label className="form-control full">
+          <span>{t("form.projectDescription")}</span>
+          <textarea
+            value={profile.projectDescription}
+            placeholder={t("form.projectDescriptionHint")}
+            rows={4}
+            onChange={(event) => updateDescription(event.target.value)}
+          />
+        </label>
+
         <div className="form-actions">
           <button className="button primary" type="button" onClick={checkEligibility} disabled={loading !== null}>
             {loading === "eligibility" ? t("form.checking") : t("form.checkEligibility")}
@@ -193,11 +216,13 @@ export function EligibilityFlow({
             className="button secondary"
             type="button"
             onClick={generatePack}
-            disabled={!eligibility || eligibility.status === "not eligible" || loading !== null}
+            disabled={!eligibility || loading !== null}
           >
             {loading === "pack" ? t("form.generating") : t("detail.generatePack")}
           </button>
         </div>
+
+        {loading === null && !eligibility ? <p className="form-hint">{t("form.packLockedNoCheck")}</p> : null}
       </div>
 
       <aside className="checker-output">
@@ -211,7 +236,9 @@ export function EligibilityFlow({
 
         {error ? <div className="alert error">{error}</div> : null}
         {eligibility ? <EligibilityResultPanel result={eligibility} /> : null}
-        {pack ? <ApplicationPackPanel pack={pack} /> : null}
+        {pack ? (
+          <ApplicationPackPanel key={pack.generatedAt} pack={pack} programId={programId ?? ""} profile={profile} />
+        ) : null}
       </aside>
     </section>
   );
@@ -262,20 +289,70 @@ function EligibilityResultPanel({ result }: { result: EligibilityResult }) {
   );
 }
 
-function ApplicationPackPanel({ pack }: { pack: ApplicationPack }) {
+function sectionKey(documentTitle: string, heading: string) {
+  return `${documentTitle}::${heading}`;
+}
+
+function ApplicationPackPanel({
+  pack,
+  programId,
+  profile
+}: {
+  pack: ApplicationPack;
+  programId: string;
+  profile: FounderProfile;
+}) {
   const { t } = useLanguage();
+  const [answers, setAnswers] = useState<Record<string, string>>({});
+
+  function setAnswer(key: string, value: string) {
+    setAnswers((current) => ({ ...current, [key]: value }));
+  }
 
   return (
     <section className="pack-panel">
       <div className="pack-header">
         <div>
-          <p className="eyebrow">{pack.aiProvider === "ollama" ? t("pack.ollama") : t("pack.fallback")}</p>
+          <p className="eyebrow">{t("pack.eyebrow")}</p>
           <h2>{pack.programTitle} {t("pack.titleSuffix")}</h2>
         </div>
-        <span className="badge">{pack.model}</span>
+        <button
+          className="button primary"
+          type="button"
+          onClick={() => {
+            void downloadApplicationPackPdf(pack, answers, t("pack.titleSuffix"));
+          }}
+        >
+          {t("pack.download")}
+        </button>
       </div>
 
-      {pack.warning ? <div className="alert">{pack.warning}</div> : null}
+      {pack.eligibility.status === "not eligible" ? (
+        <div className="alert">{t("pack.eligibilityWarning")}</div>
+      ) : null}
+
+      <div className="documents-list">
+        {pack.documents.map((document) => (
+          <article className="document-card" key={document.title}>
+            <h3>{document.title}</h3>
+            <p>{document.purpose}</p>
+            {document.sections.map((section) => {
+              const key = sectionKey(document.title, section.heading);
+              return (
+                <DocumentSectionEditor
+                  key={key}
+                  programId={programId}
+                  profile={profile}
+                  documentTitle={document.title}
+                  section={section}
+                  value={answers[key] ?? ""}
+                  onChange={(value) => setAnswer(key, value)}
+                />
+              );
+            })}
+          </article>
+        ))}
+      </div>
 
       <div className="tips-list">
         <h3>{t("pack.tips")}</h3>
@@ -286,26 +363,6 @@ function ApplicationPackPanel({ pack }: { pack: ApplicationPack }) {
             <a href={tip.sourceUrl} target="_blank" rel="noreferrer">
               {tip.sourceRequirement}
             </a>
-          </article>
-        ))}
-      </div>
-
-      <div className="documents-list">
-        {pack.documents.map((document) => (
-          <article className="document-card" key={document.title}>
-            <h3>{document.title}</h3>
-            <p>{document.purpose}</p>
-            {document.sections.map((section) => (
-              <div className="document-section" key={`${document.title}-${section.heading}`}>
-                <h4>{section.heading}</h4>
-                <p>{section.prompt}</p>
-                <ul>
-                  {section.programSpecificNotes.map((note) => (
-                    <li key={note}>{note}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
           </article>
         ))}
       </div>
@@ -322,6 +379,128 @@ function ApplicationPackPanel({ pack }: { pack: ApplicationPack }) {
   );
 }
 
+function DocumentSectionEditor({
+  programId,
+  profile,
+  documentTitle,
+  section,
+  value,
+  onChange
+}: {
+  programId: string;
+  profile: FounderProfile;
+  documentTitle: string;
+  section: DocumentSection;
+  value: string;
+  onChange: (value: string) => void;
+}) {
+  const { t } = useLanguage();
+  const [busy, setBusy] = useState<"draft" | "review" | null>(null);
+  const [review, setReview] = useState<SectionReviewResult | null>(null);
+
+  async function callAssist(mode: "draft" | "review") {
+    setBusy(mode);
+    try {
+      const response = await fetch("/api/section-assist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          programId,
+          mode,
+          documentTitle,
+          sectionHeading: section.heading,
+          sectionPrompt: section.prompt,
+          programSpecificNotes: section.programSpecificNotes,
+          profile,
+          userText: value
+        })
+      });
+
+      if (!response.ok) {
+        return;
+      }
+
+      if (mode === "draft") {
+        const data = (await response.json()) as SectionDraftResult;
+        if (data.draft) {
+          onChange(data.draft);
+        }
+      } else {
+        setReview((await response.json()) as SectionReviewResult);
+      }
+    } catch {
+      // Assist is best-effort; never surface technical errors to the founder.
+    } finally {
+      setBusy(null);
+    }
+  }
+
+  return (
+    <div className="document-section">
+      <h4>{section.heading}</h4>
+      <p className="section-guidance">{section.prompt}</p>
+      {section.programSpecificNotes.length > 0 ? (
+        <ul>
+          {section.programSpecificNotes.map((note) => (
+            <li key={note}>{note}</li>
+          ))}
+        </ul>
+      ) : null}
+
+      <textarea
+        className="section-answer"
+        value={value}
+        placeholder={t("section.answerPlaceholder")}
+        rows={6}
+        onChange={(event) => onChange(event.target.value)}
+      />
+
+      <div className="section-actions">
+        <button className="button ghost" type="button" disabled={busy !== null} onClick={() => callAssist("draft")}>
+          {busy === "draft" ? t("section.drafting") : t("section.draft")}
+        </button>
+        <button
+          className="button ghost"
+          type="button"
+          disabled={busy !== null || !value.trim()}
+          onClick={() => callAssist("review")}
+        >
+          {busy === "review" ? t("section.reviewing") : t("section.feedback")}
+        </button>
+      </div>
+
+      {review ? (
+        <div className="section-review">
+          {review.strengths.length > 0 ? <ReviewList title={t("section.strengths")} items={review.strengths} /> : null}
+          {review.gaps.length > 0 ? <ReviewList title={t("section.gaps")} items={review.gaps} /> : null}
+          {review.rewrite ? (
+            <div className="review-rewrite">
+              <h5>{t("section.rewrite")}</h5>
+              <p>{review.rewrite}</p>
+              <button className="button ghost" type="button" onClick={() => onChange(review.rewrite)}>
+                {t("section.useRewrite")}
+              </button>
+            </div>
+          ) : null}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+function ReviewList({ title, items }: { title: string; items: string[] }) {
+  return (
+    <div className="review-block">
+      <h5>{title}</h5>
+      <ul>
+        {items.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 function ResultList({ title, items }: { title: string; items: string[] }) {
   return (
     <div className="result-list">
@@ -333,4 +512,99 @@ function ResultList({ title, items }: { title: string; items: string[] }) {
       </ul>
     </div>
   );
+}
+
+function slugify(value: string): string {
+  return (
+    value
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "")
+      .slice(0, 60) || "grantforge"
+  );
+}
+
+// Builds a downloadable PDF that contains only the document structure and the
+// founder's own written answers. Application tips and the per-section
+// programme-note prompts are intentionally excluded — they are authoring aids,
+// not content for a submission.
+async function downloadApplicationPackPdf(
+  pack: ApplicationPack,
+  answers: Record<string, string>,
+  titleSuffix: string
+) {
+  const { jsPDF } = await import("jspdf");
+  const doc = new jsPDF({ unit: "pt", format: "a4" });
+
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const pageHeight = doc.internal.pageSize.getHeight();
+  const margin = 48;
+  const contentWidth = pageWidth - margin * 2;
+  let y = margin;
+
+  function ensureSpace(needed: number) {
+    if (y + needed > pageHeight - margin) {
+      doc.addPage();
+      y = margin;
+    }
+  }
+
+  function writeBlock(
+    text: string,
+    options: {
+      size: number;
+      style: "normal" | "bold" | "italic";
+      gapBefore?: number;
+      gapAfter?: number;
+      color?: number;
+    }
+  ) {
+    const { size, style, gapBefore = 0, gapAfter = 6, color = 30 } = options;
+    if (!text.trim()) {
+      return;
+    }
+    doc.setFont("helvetica", style);
+    doc.setFontSize(size);
+    doc.setTextColor(color);
+    const lineHeight = size * 1.35;
+    const lines = doc.splitTextToSize(text, contentWidth) as string[];
+    y += gapBefore;
+    for (const line of lines) {
+      ensureSpace(lineHeight);
+      doc.text(line, margin, y);
+      y += lineHeight;
+    }
+    y += gapAfter;
+  }
+
+  writeBlock(`${pack.programTitle} ${titleSuffix}`, { size: 20, style: "bold", gapAfter: 4 });
+  writeBlock(`GrantForge — generated ${new Date(pack.generatedAt).toLocaleDateString()}`, {
+    size: 10,
+    style: "normal",
+    color: 120,
+    gapAfter: 16
+  });
+
+  for (const document of pack.documents) {
+    writeBlock(document.title, { size: 15, style: "bold", gapBefore: 10, gapAfter: 2 });
+    writeBlock(document.purpose, { size: 10, style: "italic", color: 90, gapAfter: 8 });
+
+    for (const section of document.sections) {
+      writeBlock(section.heading, { size: 12, style: "bold", gapBefore: 4, gapAfter: 3 });
+      const answer = answers[sectionKey(document.title, section.heading)]?.trim();
+      if (answer) {
+        writeBlock(answer, { size: 11, style: "normal", gapAfter: 8 });
+      } else {
+        // Empty section: leave it blank (heading only), add spacing for the gap.
+        y += 8;
+      }
+    }
+  }
+
+  writeBlock("Supporting document checklist", { size: 15, style: "bold", gapBefore: 12, gapAfter: 4 });
+  for (const item of pack.checklist) {
+    writeBlock(`•  ${item}`, { size: 11, style: "normal", gapAfter: 2 });
+  }
+
+  doc.save(`${slugify(pack.programTitle)}-application-pack.pdf`);
 }

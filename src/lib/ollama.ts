@@ -6,7 +6,7 @@ export type OllamaJsonResult<T> = {
 };
 
 const defaultModel = "gemma3:1b";
-const defaultTimeoutMs = 15_000;
+const defaultTimeoutMs = 30_000;
 
 export async function generateOllamaJson<T>(
   systemPrompt: string,

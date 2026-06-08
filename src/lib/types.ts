@@ -54,6 +54,7 @@ export type FounderProfile = {
   applicationMode: "alone" | "partners" | "unknown" | "";
   previousEuFunding: "yes" | "no" | "unknown" | "";
   projectType: "R&D" | "Commercialisation" | "Digitalisation" | "Market expansion" | "Administrative support" | "";
+  projectDescription: string;
 };
 
 export type EligibilityStatus = "eligible" | "possibly eligible" | "not eligible" | "missing information";
@@ -84,6 +85,16 @@ export type GeneratedDocument = {
   title: string;
   purpose: string;
   sections: DocumentSection[];
+};
+
+export type SectionDraftResult = {
+  draft: string;
+};
+
+export type SectionReviewResult = {
+  strengths: string[];
+  gaps: string[];
+  rewrite: string;
 };
 
 export type ApplicationPack = {

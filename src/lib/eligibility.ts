@@ -16,6 +16,9 @@ const requiredProfileFields: Array<keyof FounderProfile> = [
 export function evaluateEligibility(program: Program, profile: FounderProfile): EligibilityResult {
   const reasons: string[] = [];
   const risks: string[] = [];
+  // Hard requirement violations. These deterministically drive a "not eligible"
+  // result instead of inferring it from fragile substring matching on risk text.
+  const disqualifiers: string[] = [];
   const missing = requiredProfileFields
     .filter((field) => !profile[field])
     .map((field) => fieldLabel(field));
@@ -46,8 +49,7 @@ export function evaluateEligibility(program: Program, profile: FounderProfile): 
       score += 20;
       reasons.push("The company location matches the Bulgarian procedure scope.");
     } else {
-      score -= 35;
-      risks.push("Bulgarian grant procedures normally require a Bulgarian applicant or Bulgarian implementation base.");
+      disqualifiers.push("Bulgarian grant procedures require a Bulgarian applicant or a Bulgarian implementation base.");
     }
   }
 
@@ -56,21 +58,24 @@ export function evaluateEligibility(program: Program, profile: FounderProfile): 
       score += 15;
       reasons.push("The company geography fits the European programme scope.");
     } else if (program.id !== "bg-startup-visa-2026") {
-      score -= 30;
-      risks.push("Most EU startup funding routes require an EU or Horizon Europe associated country applicant.");
+      disqualifiers.push("Most EU startup funding routes require an EU or Horizon Europe associated-country applicant.");
     }
   }
 
-  if (program.eligibilitySummary.toLowerCase().includes("sme") || program.title.toLowerCase().includes("sme")) {
+  const requiresSme =
+    program.eligibilitySummary.toLowerCase().includes("sme") ||
+    program.title.toLowerCase().includes("sme") ||
+    program.whoCanApply.some((entry) => entry.toLowerCase().includes("sme"));
+
+  if (requiresSme) {
     if (profile.isSme === "yes") {
       score += 18;
       reasons.push("SME status matches the core applicant requirement.");
-    } else if (profile.isSme === "unknown") {
-      score -= 8;
-      risks.push("SME status must be confirmed before relying on this result.");
+    } else if (profile.isSme === "no") {
+      disqualifiers.push("The programme requires SME status, which this profile does not have.");
     } else {
-      score -= 35;
-      risks.push("The programme appears to require SME status.");
+      score -= 6;
+      risks.push("SME status is unconfirmed and must be verified before relying on this result.");
     }
   }
 
@@ -112,9 +117,11 @@ export function evaluateEligibility(program: Program, profile: FounderProfile): 
     if (profile.applicationMode === "partners") {
       score += 20;
       reasons.push("Eurostars expects international collaborative R&D consortia.");
+    } else if (profile.applicationMode === "alone") {
+      disqualifiers.push("Eurostars requires an international consortium; applying alone is not eligible.");
     } else {
-      score -= 30;
-      risks.push("Eurostars normally requires international project partners.");
+      score -= 10;
+      risks.push("Eurostars normally requires international project partners; confirm your consortium.");
     }
 
     if (profile.projectType === "R&D") {
@@ -145,22 +152,35 @@ export function evaluateEligibility(program: Program, profile: FounderProfile): 
     score += 6;
   }
 
-  score = Math.max(0, Math.min(100, score));
+  const isEuRoute =
+    program.regionType === "EU" ||
+    program.regionType === "International" ||
+    program.title.toLowerCase().includes("eic") ||
+    program.id.includes("eurostars");
 
-  const status =
-    score >= 78
+  if (isEuRoute) {
+    if (profile.previousEuFunding === "yes") {
+      score += 5;
+      reasons.push("Previous EU funding shows you can handle EU reporting and compliance, which strengthens delivery capacity.");
+    } else if (profile.previousEuFunding === "no") {
+      risks.push("No previous EU funding means evaluators will look harder for evidence that you can manage the project and its reporting.");
+    }
+  }
+
+  const disqualified = disqualifiers.length > 0;
+  score = disqualified ? Math.min(score, 35) : Math.max(0, Math.min(100, score));
+
+  const status: EligibilityResult["status"] = disqualified
+    ? "not eligible"
+    : score >= 75
       ? "eligible"
-      : score >= 50
-        ? "possibly eligible"
-        : risks.some((risk) => risk.includes("requires") || risk.includes("require"))
-          ? "not eligible"
-          : "possibly eligible";
+      : "possibly eligible";
 
   return {
     status,
     score,
     reasons: reasons.length > 0 ? reasons : ["The profile has some alignment with the programme."],
-    risks,
+    risks: [...disqualifiers, ...risks],
     missing: [],
     nextSteps: buildNextSteps(program, profile, status)
   };
@@ -206,7 +226,8 @@ function fieldLabel(field: keyof FounderProfile): string {
     fundingNeed: "Funding need",
     applicationMode: "Applying alone or with partners",
     previousEuFunding: "Previous EU funding",
-    projectType: "Project type"
+    projectType: "Project type",
+    projectDescription: "Project description"
   };
   return labels[field];
 }
