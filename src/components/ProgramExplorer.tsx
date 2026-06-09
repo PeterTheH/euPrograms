@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useLanguage } from "./LanguageProvider";
 import { SaveProgramButton } from "./SaveProgramButton";
-import { deadlineLabel, formatDate } from "@/lib/program-utils";
+import { deadlineLabel, daysUntilDeadline, formatDate } from "@/lib/program-utils";
 import type { Program, ProgramStatus } from "@/lib/types";
 
 type FilterState = {
@@ -53,7 +53,7 @@ export function ProgramExplorer({ programs }: { programs: Program[] }) {
         .join(" ")
         .toLowerCase();
 
-      const deadlineDays = daysUntil(program);
+      const deadlineDays = daysUntilDeadline(program);
 
       return (
         (!normalizedQuery || haystack.includes(normalizedQuery)) &&
@@ -207,18 +207,4 @@ function FilterSelect({
 
 function unique(values: string[]) {
   return Array.from(new Set(values)).sort((a, b) => a.localeCompare(b));
-}
-
-function daysUntil(program: Program): number | null {
-  if (!program.deadline) {
-    return null;
-  }
-
-  const today = new Date("2026-05-19T00:00:00.000Z");
-  const deadline = new Date(`${program.deadline}T00:00:00.000Z`);
-  if (Number.isNaN(deadline.getTime())) {
-    return null;
-  }
-
-  return Math.ceil((deadline.getTime() - today.getTime()) / 86_400_000);
 }

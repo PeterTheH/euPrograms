@@ -226,6 +226,11 @@ function isAllowedByRobots(robotsText: string, pathname: string): boolean {
   return true;
 }
 
+function startOfTodayUtc(): Date {
+  const now = new Date();
+  return new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+}
+
 function extractFirstIsoDateAfter(html: string, marker: string): string | null {
   const index = html.indexOf(marker);
   const source = index >= 0 ? html.slice(index, index + 800) : html;
@@ -235,7 +240,7 @@ function extractFirstIsoDateAfter(html: string, marker: string): string | null {
     return null;
   }
 
-  const today = new Date("2026-05-19T00:00:00.000Z");
+  const today = startOfTodayUtc();
   const future = matches
     .map((match) => {
       const [, day, month, year] = match;

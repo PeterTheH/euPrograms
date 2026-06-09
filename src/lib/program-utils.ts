@@ -1,6 +1,10 @@
 import type { Program } from "./types";
 
-const currentDate = new Date("2026-05-19T00:00:00.000Z");
+function startOfTodayUtc(): Date {
+  const now = new Date();
+  return new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+}
+
 
 export function formatDate(value: string | null): string {
   if (!value) {
@@ -30,7 +34,7 @@ export function daysUntilDeadline(program: Program): number | null {
     return null;
   }
 
-  return Math.ceil((deadline.getTime() - currentDate.getTime()) / 86_400_000);
+  return Math.ceil((deadline.getTime() - startOfTodayUtc().getTime()) / 86_400_000);
 }
 
 export function deadlineLabel(program: Program): string {

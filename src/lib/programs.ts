@@ -39,7 +39,7 @@ export function inferStatus(program: Program): ProgramStatus {
     return program.status;
   }
 
-  const today = new Date("2026-05-19T00:00:00.000Z");
+  const today = startOfTodayUtc();
   const deadline = new Date(`${program.deadline}T23:59:59.000Z`);
 
   if (Number.isNaN(deadline.getTime())) {
@@ -58,7 +58,7 @@ export function daysUntilDeadline(program: Program): number | null {
     return null;
   }
 
-  const today = new Date("2026-05-19T00:00:00.000Z");
+  const today = startOfTodayUtc();
   const deadline = new Date(`${program.deadline}T00:00:00.000Z`);
 
   if (Number.isNaN(deadline.getTime())) {
@@ -84,6 +84,11 @@ export function formatDate(value: string | null): string {
     year: "numeric",
     timeZone: "UTC"
   }).format(date);
+}
+
+function startOfTodayUtc(): Date {
+  const now = new Date();
+  return new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
 }
 
 function comparePrograms(a: Program, b: Program): number {

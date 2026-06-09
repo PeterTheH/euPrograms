@@ -10,8 +10,8 @@
     ],
     "amount": "Procedure budget EUR 96.3M; company aid depends on enterprise category and aid regime",
     "maxFundingEur": null,
-    "deadline": "2026-05-27",
-    "status": "open",
+    "deadline": "2026-06-05",
+    "status": "closed",
     "startupStages": [
       "Early revenue",
       "Scaleup"
@@ -67,8 +67,80 @@
     ],
     "officialUrl": "https://eumis2020.government.bg/en/s/Procedure/InfoPublicDiscussion/533f9f35-e4ca-45f7-ab26-bf64efb3da5d",
     "sourceId": "eumis-bg",
-    "sourceNotes": "ISUN and MIG sources list the procedure under PCIE; public summaries list the current 27 May 2026 deadline.",
-    "lastChecked": "2026-05-19"
+    "sourceNotes": "MIG updated the procedure after ISUN interruptions; the current official deadline was 5 June 2026 at 16:30.",
+    "lastChecked": "2026-06-08"
+  },
+  {
+    "id": "bg-lig-sme-innovation-2026",
+    "title": "BG16RFPR001-1.011 Introduction of Innovations by SMEs in Local Initiative Group Territories",
+    "provider": "Bulgarian Ministry of Innovation and Growth / PCIE 2021-2027",
+    "geography": "Bulgaria - approved Local Initiative Group territories",
+    "regionType": "Bulgaria",
+    "fundingType": [
+      "Grant",
+      "Local grant"
+    ],
+    "amount": "Procedure budget EUR 19.98M; individual grants EUR 15,000 to EUR 102,500, up to 75% intensity",
+    "maxFundingEur": 102500,
+    "deadline": "2026-10-31",
+    "status": "upcoming",
+    "startupStages": [
+      "Prototype",
+      "MVP",
+      "Early revenue",
+      "Scaleup"
+    ],
+    "sectors": [
+      "Digital transformation",
+      "Hardware",
+      "Climate tech",
+      "SaaS",
+      "AI",
+      "R&D"
+    ],
+    "difficulty": "Medium",
+    "eligibilitySummary": "Bulgarian SMEs located on Local Initiative Group territories implementing innovations aligned with the Smart Specialisation Strategy.",
+    "description": "A local Bulgarian grant route that complements community-led local development strategies. It supports SMEs on approved LIG territories that introduce new or improved products, processes, or innovation services.",
+    "whoCanApply": [
+      "Existing SMEs registered as traders or cooperatives",
+      "Applicants operating on an eligible Local Initiative Group territory",
+      "Projects introducing innovation in Smart Specialisation priority areas"
+    ],
+    "whoCannotApply": [
+      "Companies outside eligible LIG territories",
+      "Applicants without SME status",
+      "Projects without a clear innovation component"
+    ],
+    "eligibleCosts": [
+      "Tangible and intangible fixed assets",
+      "Innovation-related services",
+      "Implementation costs allowed by the specific LIG strategy"
+    ],
+    "requiredDocuments": [
+      "ISUN application",
+      "Company eligibility declarations",
+      "Evidence of eligible LIG territory",
+      "Budget and cost justification",
+      "Innovation implementation plan"
+    ],
+    "evaluationCriteria": [
+      "Location and eligibility under the local strategy",
+      "Innovation fit with IS3 2021-2027",
+      "Implementation readiness",
+      "Budget compliance",
+      "Local economic impact"
+    ],
+    "applicationFocus": [
+      "Eligible territory proof",
+      "Innovation novelty",
+      "Local impact",
+      "Asset and service justification",
+      "Implementation timeline"
+    ],
+    "officialUrl": "https://www.mig.government.bg/programa-konkurentosposobnost-i-inovaczii-v-predpriyatiyata/novini-proczeduri-pkip/vnedryavane-na-inovaczii-v-msp-na-teritoriyata-na-mestni-inicziativni-grupi-mig/",
+    "sourceId": "mig-pcie",
+    "sourceNotes": "MIG public-consultation page lists EUR 19,976,187.59 budget and EUR 15,000 to EUR 102,500 individual grant range; the 2026 PCIE work programme indicates multiple deadlines through October 2026.",
+    "lastChecked": "2026-06-08"
   },
   {
     "id": "bg-digitalization-enterprises-2025",
@@ -136,6 +208,75 @@
     "sourceId": "mig-pcie",
     "sourceNotes": "MIG page tracks contracts and documents; public summaries list the 26 September 2025 deadline.",
     "lastChecked": "2026-05-19"
+  },
+  {
+    "id": "bg-green-technologies-smes-2026",
+    "title": "BG16RFPR001-2.003 Green Technologies in SMEs",
+    "provider": "Bulgarian Ministry of Innovation and Growth / PCIE 2021-2027",
+    "geography": "Bulgaria",
+    "regionType": "Bulgaria",
+    "fundingType": [
+      "Grant",
+      "Green transition grant"
+    ],
+    "amount": "Procedure budget BGN 162.3M; grants BGN 150,000 to BGN 800,000, up to 70% intensity",
+    "maxFundingEur": 409034,
+    "deadline": "2026-08-31",
+    "status": "upcoming",
+    "startupStages": [
+      "Early revenue",
+      "Scaleup"
+    ],
+    "sectors": [
+      "Climate tech",
+      "Hardware",
+      "Digital transformation",
+      "Robotics",
+      "R&D"
+    ],
+    "difficulty": "Medium",
+    "eligibilitySummary": "Bulgarian SMEs introducing green technologies and circular-economy models that reduce waste, resource use, or environmental impact.",
+    "description": "A Bulgarian SME grant for circular-economy investments such as waste reduction, recycled or bio-based inputs, reduced packaging, longer product life, and sustainable products or services.",
+    "whoCanApply": [
+      "Existing Bulgarian SMEs registered as traders or cooperatives",
+      "Companies with sufficient recent sales history under the call rules",
+      "Applicants introducing green technologies in eligible economic activities"
+    ],
+    "whoCannotApply": [
+      "Idea-stage teams without an operating SME",
+      "Projects without measurable green or circular-economy outcomes",
+      "Applicants outside eligible sectors or revenue thresholds"
+    ],
+    "eligibleCosts": [
+      "Machinery and equipment for green technologies",
+      "Intangible assets including software, patents, designs, and licenses",
+      "Services linked to the green technology implementation"
+    ],
+    "requiredDocuments": [
+      "ISUN application",
+      "Technical specification for assets",
+      "Budget and supplier offers",
+      "Circular-economy impact explanation",
+      "Company financial information"
+    ],
+    "evaluationCriteria": [
+      "Resource-efficiency and circular-economy impact",
+      "Eligible activity and cost compliance",
+      "Financial capacity",
+      "Implementation readiness",
+      "Regional aid and de minimis compliance"
+    ],
+    "applicationFocus": [
+      "Waste and resource baseline",
+      "Measurable environmental result",
+      "Asset specification",
+      "Revenue eligibility",
+      "Implementation within 12 months"
+    ],
+    "officialUrl": "https://www.mig.government.bg/programa-konkurentosposobnost-i-inovaczii-v-predpriyatiyata/novini-proczeduri-pkip/vavezhdane-na-zeleni-technologii-v-msp/",
+    "sourceId": "mig-pcie",
+    "sourceNotes": "MIG announced the draft procedure for public consultation; the 2026 PCIE work programme lists May-August 2026 timing and BGN 150,000 to BGN 800,000 project grant range.",
+    "lastChecked": "2026-06-08"
   },
   {
     "id": "bg-small-innovative-grants-2025",
@@ -210,6 +351,78 @@
     "lastChecked": "2026-05-19"
   },
   {
+    "id": "bg-institutional-european-partnerships-2026",
+    "title": "BG16RFPR002-1.011 Participation of Bulgarian Organisations in Institutionalised European Partnerships",
+    "provider": "Bulgarian Ministry of Innovation and Growth / RIDST 2021-2027",
+    "geography": "Bulgaria with Horizon Europe partnership projects",
+    "regionType": "Bulgaria",
+    "fundingType": [
+      "Grant",
+      "Collaborative R&D"
+    ],
+    "amount": "Procedure budget EUR 27.79M; maximum grant EUR 5.11M per concrete beneficiary",
+    "maxFundingEur": 5112919,
+    "deadline": "2026-06-15",
+    "status": "open",
+    "startupStages": [
+      "R&D",
+      "Prototype",
+      "MVP",
+      "Scaleup"
+    ],
+    "sectors": [
+      "Deep tech",
+      "AI",
+      "Healthtech",
+      "Climate tech",
+      "Hardware",
+      "R&D"
+    ],
+    "difficulty": "Very high",
+    "eligibilitySummary": "Bulgarian organisations already approved in Horizon Europe institutionalised partnerships may receive complementary national grant support.",
+    "description": "A direct-grant route for Bulgarian beneficiaries participating as coordinator or partner in EU institutionalised partnerships under Horizon Europe, including chips, clean hydrogen, rail, health, aviation, and smart networks partnerships.",
+    "whoCanApply": [
+      "Bulgarian legal entities, public or private",
+      "Organisations approved for funding by the European Commission in eligible institutionalised partnerships",
+      "Bulgarian coordinators or designated Bulgarian partners with a signed EC agreement"
+    ],
+    "whoCannotApply": [
+      "Applicants without an approved Horizon Europe partnership project",
+      "Projects outside the listed institutionalised partnerships",
+      "Activities beyond the eligible R&D or feasibility scope"
+    ],
+    "eligibleCosts": [
+      "Research and development activities",
+      "Feasibility studies",
+      "Activities eligible under the relevant Horizon Europe partnership and RIDST rules"
+    ],
+    "requiredDocuments": [
+      "ISUN application with qualified electronic signature",
+      "Evidence of Horizon Europe approval and contract",
+      "Project budget and work packages",
+      "Beneficiary designation evidence",
+      "Declarations and supporting documents"
+    ],
+    "evaluationCriteria": [
+      "Eligibility as concrete beneficiary",
+      "Fit with Horizon Europe partnership rules",
+      "RIDST and IS3 priority alignment",
+      "Budget compliance",
+      "Implementation and reporting capacity"
+    ],
+    "applicationFocus": [
+      "Traceability to EC contract",
+      "Bulgarian partner role",
+      "Eligible R&D scope",
+      "Budget separation",
+      "Submission window timing"
+    ],
+    "officialUrl": "https://www.mig.government.bg/programa-nauchni-izsledvaniya-inovaczii-i-digitalizacziya-za-inteligentna-transformacziya/novini-proczeduri-po-pniidit/uchastie_na_bg_organizacii_v_inst_evropejski_partnjorstva/",
+    "sourceId": "mig-ridst",
+    "sourceNotes": "MIG lists three submission windows ending 15 June 2026, 16 November 2026, and 31 May 2027; this record tracks the first active window.",
+    "lastChecked": "2026-06-08"
+  },
+  {
     "id": "bg-seal-of-excellence-2026",
     "title": "BG16RFPR002-1.018 Support for Bulgarian Innovative Enterprises with Seal of Excellence Projects",
     "provider": "Bulgarian Ministry of Innovation and Growth / RIDST 2021-2027",
@@ -282,6 +495,77 @@
     "sourceId": "eumis-bg",
     "sourceNotes": "EUMIS page lists the procedure and 22 June 2026 deadline.",
     "lastChecked": "2026-05-19"
+  },
+  {
+    "id": "burgas-startup-entrepreneurs-2026",
+    "title": "Burgas Municipality Support for Startup Entrepreneurs and Young Innovators",
+    "provider": "Burgas Municipality / Business Incubator Burgas",
+    "geography": "Burgas Municipality, Bulgaria",
+    "regionType": "Bulgaria",
+    "fundingType": [
+      "Grant",
+      "Local grant",
+      "Startup support"
+    ],
+    "amount": "Up to EUR 2,556.46 (BGN 5,000); up to 50% project support, or 100% for student teams",
+    "maxFundingEur": 2556,
+    "deadline": "2026-04-13",
+    "status": "closed",
+    "startupStages": [
+      "Idea",
+      "Prototype",
+      "MVP"
+    ],
+    "sectors": [
+      "Digital transformation",
+      "SaaS",
+      "Climate tech",
+      "AI",
+      "Social innovation"
+    ],
+    "difficulty": "Low",
+    "eligibilitySummary": "Local Burgas startup and youth innovation support for newly created firms, teams, and student entrepreneurs implementing first-time local ideas.",
+    "description": "A municipal grant and mentoring route that helps early founders and young innovators in Burgas validate and launch practical solutions for local economic, social, or environmental challenges.",
+    "whoCanApply": [
+      "Individuals and legal entities, including micro and small enterprises registered up to three years before application",
+      "Teams of at least two people with a shared business idea",
+      "Burgas students over 16 years old"
+    ],
+    "whoCannotApply": [
+      "Projects not implemented for the first time in Burgas",
+      "Applicants outside the municipal programme scope",
+      "Projects without practical local benefit"
+    ],
+    "eligibleCosts": [
+      "Direct startup project costs",
+      "Business plan development support",
+      "Mentoring, training, office, technical, and logistics support"
+    ],
+    "requiredDocuments": [
+      "Online application form",
+      "Project description",
+      "Budget",
+      "Applicant/team information",
+      "Business idea and local impact statement"
+    ],
+    "evaluationCriteria": [
+      "Sustainability",
+      "Contribution to Burgas economic development",
+      "Practical solution to local challenges",
+      "Innovation and feasibility",
+      "Team readiness"
+    ],
+    "applicationFocus": [
+      "First-time implementation in Burgas",
+      "Local benefit",
+      "Lean budget",
+      "Business plan potential",
+      "Founder commitment"
+    ],
+    "officialUrl": "https://www.burgas.bg/bg/novini/obshtina-burgas-startira-nova-sesiya-za-podkrepa-na-startirashti-predpriemachi-i-mladi-inovatori/",
+    "sourceId": "burgas-municipality",
+    "sourceNotes": "Burgas Municipality announced the 2026 session with a 13 April 2026 deadline; keep as a watch-list item for future municipal intakes.",
+    "lastChecked": "2026-06-08"
   },
   {
     "id": "eic-accelerator-2026",
@@ -359,7 +643,7 @@
     "officialUrl": "https://eic.ec.europa.eu/eic-funding-opportunities_en",
     "sourceId": "eic",
     "sourceNotes": "EIC funding page lists Accelerator 2026 as open with 2026 cut-off dates.",
-    "lastChecked": "2026-06-07"
+    "lastChecked": "2026-06-08"
   },
   {
     "id": "eic-step-scale-up-2026",
@@ -430,7 +714,7 @@
     "officialUrl": "https://eic.ec.europa.eu/eic-funding-opportunities_en",
     "sourceId": "eic",
     "sourceNotes": "EIC funding page lists STEP Scale Up as open with 2026 cut-off dates.",
-    "lastChecked": "2026-06-07"
+    "lastChecked": "2026-06-08"
   },
   {
     "id": "eit-urban-mobility-startups-2026",
@@ -504,7 +788,7 @@
     "officialUrl": "https://www.eit.europa.eu/our-activities/opportunities",
     "sourceId": "eit",
     "sourceNotes": "EIT opportunity listing shows Financial Support To Startups Open Call 2026 with a 16 November 2026 deadline.",
-    "lastChecked": "2026-06-07"
+    "lastChecked": "2026-06-08"
   },
   {
     "id": "eit-venture-incubation-2026",
@@ -572,7 +856,7 @@
     "officialUrl": "https://www.eit.europa.eu/our-activities/opportunities",
     "sourceId": "eit",
     "sourceNotes": "EIT opportunity listing shows Venture Incubation Program with a 9 June 2026 deadline.",
-    "lastChecked": "2026-06-07"
+    "lastChecked": "2026-06-08"
   },
   {
     "id": "eurostars-september-2026",
@@ -650,7 +934,720 @@
     "officialUrl": "https://www.eurekanetwork.org/programmes/eurostars/apply/",
     "sourceId": "eureka-eurostars",
     "sourceNotes": "Eureka publishes Eurostars calls and national funding information by country.",
-    "lastChecked": "2026-06-07"
+    "lastChecked": "2026-06-08"
+  },
+  {
+    "id": "bg-hydrogen-value-chain-capacity-2025",
+    "title": "Hydrogen Value Chain Capacity",
+    "provider": "Programme Regional Development 2021-2027 / Just Transition territories",
+    "geography": "Stara Zagora and linked transition municipalities in Bulgaria",
+    "regionType": "Bulgaria",
+    "fundingType": [
+      "Grant",
+      "Regional transition grant"
+    ],
+    "amount": "Listed budget BGN 291.8M; project grant limits to be clarified in call documents",
+    "maxFundingEur": null,
+    "deadline": "2025-12-31",
+    "status": "closed",
+    "startupStages": [
+      "Early revenue",
+      "Scaleup",
+      "R&D"
+    ],
+    "sectors": [
+      "Climate tech",
+      "Hardware",
+      "Deep tech",
+      "Robotics",
+      "AI",
+      "R&D"
+    ],
+    "difficulty": "High",
+    "eligibilitySummary": "Regional hydrogen value-chain support for SMEs, public bodies, municipalities, universities, and research organisations in Bulgarian just-transition territories.",
+    "description": "A large regional-transition route for green hydrogen production, storage, distribution, use, and digital management assets in Stara Zagora and linked municipalities.",
+    "whoCanApply": [
+      "SMEs in eligible transition territories",
+      "Ministry of Energy or its enterprises",
+      "Eligible municipalities",
+      "Universities and research organisations including BAS"
+    ],
+    "whoCannotApply": [
+      "Applicants outside the eligible territorial scope",
+      "Projects unrelated to hydrogen value-chain capacity",
+      "Applicants without technical and implementation capacity"
+    ],
+    "eligibleCosts": [
+      "Electrolysers, renewable energy, water treatment, transformers, and inverters",
+      "Buffer tanks, compression or liquefaction systems, safety and monitoring systems",
+      "Hydrogen charging stations, logistics platforms, and tracking systems",
+      "Fuel cells, drive systems, and demonstration vehicles",
+      "SCADA, ERP, HMI, IoT, AI, sensors, cloud infrastructure, and labs"
+    ],
+    "requiredDocuments": [
+      "Call application package when opened",
+      "Technical investment plan",
+      "Territorial eligibility evidence",
+      "Budget and procurement documentation",
+      "Consortium or public-body documents where relevant"
+    ],
+    "evaluationCriteria": [
+      "Hydrogen value-chain contribution",
+      "Just-transition territorial impact",
+      "Technical readiness",
+      "Implementation capacity",
+      "Budget and aid-regime compliance"
+    ],
+    "applicationFocus": [
+      "Eligible municipality",
+      "Hydrogen value-chain role",
+      "Technical specifications",
+      "Energy and safety plan",
+      "Public/private partner logic"
+    ],
+    "officialUrl": "https://eufunds.bg/sites/default/files/uploads/oprd/docs/2025-02/Pril.%201.%20IGRP_2025_PRR_r.1.pdf",
+    "sourceId": "euro-programs",
+    "sourceNotes": "Euro-Programs and the PRR indicative work programme list the hydrogen value-chain route and eligible transition territories; verify official opening before marking open.",
+    "lastChecked": "2026-06-08"
+  },
+  {
+    "id": "euipo-sme-fund-2026",
+    "title": "Ideas Powered for Business SME Fund 2026",
+    "provider": "EUIPO / European Commission, with Bulgarian Patent Office information",
+    "geography": "EU SMEs, including Bulgaria",
+    "regionType": "EU",
+    "fundingType": [
+      "Grant",
+      "Innovation voucher",
+      "IP voucher"
+    ],
+    "amount": "IP reimbursement vouchers; as of June 2026 patent and plant-variety vouchers remain available",
+    "maxFundingEur": 1500,
+    "deadline": "2026-12-04",
+    "status": "open",
+    "startupStages": [
+      "Prototype",
+      "MVP",
+      "Early revenue",
+      "Scaleup",
+      "R&D"
+    ],
+    "sectors": [
+      "AI",
+      "SaaS",
+      "Deep tech",
+      "Hardware",
+      "Healthtech",
+      "Climate tech",
+      "R&D"
+    ],
+    "difficulty": "Low",
+    "eligibilitySummary": "EU-based SMEs, including Bulgarian SMEs, can apply for IP reimbursement vouchers before filing eligible IP actions.",
+    "description": "A light EU grant scheme helping SMEs protect intellectual property. It is useful for startups preparing patents, trade marks, designs, or plant-variety protection, subject to voucher availability.",
+    "whoCanApply": [
+      "SMEs established in the EU or Ukraine",
+      "Business owners, employees, or authorised representatives applying on behalf of the SME",
+      "Applicants who wait for grant decision before claiming reimbursement"
+    ],
+    "whoCannotApply": [
+      "Non-SME applicants",
+      "Applicants seeking reimbursement before receiving the voucher decision",
+      "Requests for voucher categories whose funds are exhausted"
+    ],
+    "eligibleCosts": [
+      "Patent-related eligible fees under Voucher 3",
+      "Community plant variety fees under Voucher 4",
+      "Other IP services when the relevant voucher is available"
+    ],
+    "requiredDocuments": [
+      "EUIPO SME Fund account",
+      "VAT certificate or company registration evidence",
+      "Bank statement",
+      "Voucher application",
+      "Proof of payment for reimbursement claim"
+    ],
+    "evaluationCriteria": [
+      "SME eligibility",
+      "Correct voucher category",
+      "Available budget",
+      "Application before incurring/claiming costs",
+      "Valid supporting documents"
+    ],
+    "applicationFocus": [
+      "Apply before filing or claiming",
+      "Voucher availability",
+      "IP strategy",
+      "Bank and VAT evidence",
+      "Patent/design/trade mark timing"
+    ],
+    "officialUrl": "https://www.euipo.europa.eu/en/sme-corner/sme-fund/2026",
+    "sourceId": "euipo-sme-fund",
+    "sourceNotes": "EUIPO states the 2026 SME Fund runs from 2 February to 4 December 2026; Bulgarian Patent Office republishes the opportunity for Bulgarian SMEs.",
+    "lastChecked": "2026-06-08"
+  },
+  {
+    "id": "bg-rural-non-agri-crafts-2025",
+    "title": "Intervention II.G.3 Rural Non-Agricultural Investments - Crafts",
+    "provider": "State Fund Agriculture / Strategic Plan for Agriculture and Rural Areas 2023-2027",
+    "geography": "Rural municipalities in Bulgaria",
+    "regionType": "Bulgaria",
+    "fundingType": [
+      "Grant",
+      "Rural local grant"
+    ],
+    "amount": "Budget BGN 5.87M; eligible project costs BGN 29,337 to BGN 782,320, up to 50% aid",
+    "maxFundingEur": 399994,
+    "deadline": "2025-04-22",
+    "status": "closed",
+    "startupStages": [
+      "Idea",
+      "Prototype",
+      "MVP",
+      "Early revenue"
+    ],
+    "sectors": [
+      "Hardware",
+      "Digital transformation",
+      "Climate tech"
+    ],
+    "difficulty": "Low",
+    "eligibilitySummary": "Self-employed craftspeople and micro-enterprises in Bulgarian rural areas investing in craft activities.",
+    "description": "A small rural grant route for craft businesses and micro-enterprises, relevant for makers, artisan manufacturing, and rural creative production with equipment or digitalization needs.",
+    "whoCanApply": [
+      "Individuals registered under the Crafts Act as self-employed craftspeople",
+      "Micro-enterprises",
+      "Applicants seated in eligible rural municipalities"
+    ],
+    "whoCannotApply": [
+      "Applicants outside rural territories",
+      "Projects outside eligible craft activities",
+      "Mobile renewable-energy installations and other excluded costs"
+    ],
+    "eligibleCosts": [
+      "New machinery and equipment",
+      "Construction and installation works",
+      "Renewable energy where eligible",
+      "Specialised vehicles",
+      "Client websites, office equipment, software, and licenses"
+    ],
+    "requiredDocuments": [
+      "SEU/DFZ application",
+      "Craft registration evidence",
+      "Budget and supplier documentation",
+      "Rural-area eligibility evidence",
+      "Business and implementation plan"
+    ],
+    "evaluationCriteria": [
+      "Craft eligibility",
+      "Rural development contribution",
+      "Investment feasibility",
+      "Budget compliance",
+      "Local employment and inclusion effect"
+    ],
+    "applicationFocus": [
+      "Craft registration",
+      "Rural location",
+      "Equipment need",
+      "Local market",
+      "De minimis limits"
+    ],
+    "officialUrl": "https://euro-programs.com/%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%B0/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B2%D0%B5%D0%BD%D1%86%D0%B8%D1%8F-ii-%D0%B3-3-%D0%B8%D0%BD%D0%B2%D0%B5%D1%81%D1%82%D0%B8%D1%86%D0%B8%D0%B8-%D0%B7%D0%B0-%D0%BD%D0%B5%D1%81%D0%B5%D0%BB%D1%81-3/",
+    "sourceId": "euro-programs",
+    "sourceNotes": "Euro-Programs catalogue lists the 2025 crafts intake; use as a discovery record and verify future intakes against DFZ/SEU.",
+    "lastChecked": "2026-06-08"
+  },
+  {
+    "id": "bg-rural-non-agri-production-2025",
+    "title": "Intervention II.G.3 Rural Non-Agricultural Investments - Production",
+    "provider": "State Fund Agriculture / Strategic Plan for Agriculture and Rural Areas 2023-2027",
+    "geography": "Rural municipalities in Bulgaria",
+    "regionType": "Bulgaria",
+    "fundingType": [
+      "Grant",
+      "Rural local grant"
+    ],
+    "amount": "Budget BGN 91.45M; eligible project costs BGN 29,337 to BGN 782,320, up to 50% aid",
+    "maxFundingEur": 399994,
+    "deadline": "2025-04-29",
+    "status": "closed",
+    "startupStages": [
+      "Early revenue",
+      "Scaleup"
+    ],
+    "sectors": [
+      "Hardware",
+      "Digital transformation",
+      "Climate tech",
+      "SaaS"
+    ],
+    "difficulty": "Medium",
+    "eligibilitySummary": "Micro-enterprises and eligible farmers in Bulgarian rural areas investing in non-agricultural production activities.",
+    "description": "A rural development grant for local production businesses outside agricultural Annex I products, including equipment, construction, renewable energy, software, websites, and mobile applications.",
+    "whoCanApply": [
+      "Farmers registered for at least 24 months with required economic size",
+      "Micro-enterprises and sole traders",
+      "Applicants seated in eligible rural municipalities"
+    ],
+    "whoCannotApply": [
+      "Applicants outside rural territories",
+      "Companies above micro-enterprise size where excluded",
+      "Tourism accommodation projects and other excluded activities"
+    ],
+    "eligibleCosts": [
+      "New machinery and equipment",
+      "Construction and installation works",
+      "Renewable energy for own needs",
+      "Specialised transport vehicles",
+      "Client websites, mobile applications, software, and licenses"
+    ],
+    "requiredDocuments": [
+      "SEU/DFZ application",
+      "Business plan",
+      "Investment project where construction is included",
+      "Budget and supplier documentation",
+      "Rural-area and applicant eligibility evidence"
+    ],
+    "evaluationCriteria": [
+      "Rural development contribution",
+      "Applicant eligibility",
+      "Investment feasibility",
+      "Budget compliance",
+      "Employment and local competitiveness effect"
+    ],
+    "applicationFocus": [
+      "Rural municipality eligibility",
+      "Non-agricultural production scope",
+      "Asset specification",
+      "De minimis limits",
+      "Procurement route"
+    ],
+    "officialUrl": "https://www.dfz.bg/open-admissions-sprzsr-2023-2027/-/asset_publisher/qtsq/content/intervencia-ii-g-3-investicii-za-neselskostopanski-dejnosti-v-selskite-rajoni-proizvodstvo-",
+    "sourceId": "dfz-rural-development",
+    "sourceNotes": "DFZ official intake page and Euro-Programs catalogue list the 2025 production intake; keep as a rural local-grant reference and monitor for future calls.",
+    "lastChecked": "2026-06-08"
+  },
+  {
+    "id": "bg-rural-non-agri-services-2025",
+    "title": "Intervention II.G.3 Rural Non-Agricultural Investments - Services",
+    "provider": "State Fund Agriculture / Strategic Plan for Agriculture and Rural Areas 2023-2027",
+    "geography": "Rural municipalities in Bulgaria",
+    "regionType": "Bulgaria",
+    "fundingType": [
+      "Grant",
+      "Rural local grant"
+    ],
+    "amount": "Budget BGN 95.83M; eligible project costs BGN 29,337 to BGN 782,320, up to 50% aid",
+    "maxFundingEur": 399994,
+    "deadline": "2025-05-30",
+    "status": "closed",
+    "startupStages": [
+      "Early revenue",
+      "Scaleup"
+    ],
+    "sectors": [
+      "Digital transformation",
+      "SaaS",
+      "Climate tech",
+      "Hardware"
+    ],
+    "difficulty": "Medium",
+    "eligibilitySummary": "Micro-enterprises and eligible farmers in Bulgarian rural areas diversifying into non-agricultural services and goods.",
+    "description": "A rural development grant for local service businesses that complement or diversify the rural economy, including equipment, construction, renewable energy, software, websites, and mobile applications.",
+    "whoCanApply": [
+      "Farmers registered for at least 24 months with required economic size",
+      "Micro-enterprises",
+      "Applicants seated in eligible rural municipalities"
+    ],
+    "whoCannotApply": [
+      "Applicants outside rural territories",
+      "Projects outside eligible service or goods activities",
+      "Tourism accommodation projects and other excluded activities"
+    ],
+    "eligibleCosts": [
+      "New machinery and equipment",
+      "Construction and new building works",
+      "Renewable energy for own consumption",
+      "Specialised vehicles",
+      "Client websites, mobile applications, software, and licenses"
+    ],
+    "requiredDocuments": [
+      "SEU/DFZ application",
+      "Business plan",
+      "Budget and supplier documentation",
+      "Rural-area eligibility evidence",
+      "Company and farmer registration evidence where applicable"
+    ],
+    "evaluationCriteria": [
+      "Rural diversification contribution",
+      "Applicant eligibility",
+      "Investment feasibility",
+      "Budget compliance",
+      "Environmental and local economic effect"
+    ],
+    "applicationFocus": [
+      "Rural service demand",
+      "Diversification logic",
+      "Asset and software need",
+      "Revenue model",
+      "Procurement route"
+    ],
+    "officialUrl": "https://www.dfz.bg/open-admissions-sprzsr-2023-2027/-/asset_publisher/qtsq/content/%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B2%D0%B5%D0%BD%D1%86%D0%B8%D1%8F-ii.%D0%B3.3-%E2%80%9E%D0%B8%D0%BD%D0%B2%D0%B5%D1%81%D1%82%D0%B8%D1%86%D0%B8%D0%B8-%D0%B7%D0%B0-%D0%BD%D0%B5%D1%81%D0%B5%D0%BB%D1%81%D0%BA%D0%BE%D1%81%D1%82%D0%BE%D0%BF%D0%B0%D0%BD%D1%81",
+    "sourceId": "dfz-rural-development",
+    "sourceNotes": "DFZ official intake page and Euro-Programs catalogue list the 2025 services intake; keep as a rural local-grant reference and monitor for future calls.",
+    "lastChecked": "2026-06-08"
+  },
+  {
+    "id": "bg-industry-4-technologies-enterprises-2025",
+    "title": "Introduction of Industry 4.0 Technologies in Enterprises",
+    "provider": "Bulgarian Ministry of Innovation and Growth / PCIE 2021-2027",
+    "geography": "Bulgaria",
+    "regionType": "Bulgaria",
+    "fundingType": [
+      "Grant",
+      "Digitalization grant"
+    ],
+    "amount": "Budget BGN 105.98M; grants BGN 150,000 to BGN 850,000",
+    "maxFundingEur": 434598,
+    "deadline": "2025-12-15",
+    "status": "closed",
+    "startupStages": [
+      "Early revenue",
+      "Scaleup"
+    ],
+    "sectors": [
+      "AI",
+      "SaaS",
+      "Cybersecurity",
+      "Digital transformation",
+      "Hardware",
+      "Robotics"
+    ],
+    "difficulty": "Medium",
+    "eligibilitySummary": "Small and medium Bulgarian enterprises investing in Industry 4.0 software, equipment, cybersecurity, and standards.",
+    "description": "A reference PCIE digitalization grant for higher-level Industry 4.0 investments, including data analytics, cloud or edge, IIoT, AI/ML, additive manufacturing, simulation, AR/VR, cybersecurity, and standards.",
+    "whoCanApply": [
+      "Small and medium enterprises registered by the call reference date",
+      "Companies meeting 2024 sales thresholds",
+      "Applicants investing in eligible Industry 4.0 technologies"
+    ],
+    "whoCannotApply": [
+      "Micro-enterprises where excluded",
+      "Applicants below revenue thresholds",
+      "Projects that do not introduce at least one eligible Industry 4.0 technology"
+    ],
+    "eligibleCosts": [
+      "Software and digital solutions",
+      "Custom software implementation",
+      "SaaS licenses during eligible implementation period",
+      "Production and technological equipment for Industry 4.0",
+      "Cybersecurity and data confidentiality measures",
+      "Industry 4.0 standards"
+    ],
+    "requiredDocuments": [
+      "ISUN application",
+      "Technical specifications for assets",
+      "Supplier offers",
+      "Budget",
+      "Company financial evidence"
+    ],
+    "evaluationCriteria": [
+      "Introduced Industry 4.0 technologies",
+      "Financial and revenue eligibility",
+      "Budget correctness",
+      "Digital maturity impact",
+      "Cybersecurity and standards fit"
+    ],
+    "applicationFocus": [
+      "Technology stack mapping",
+      "Big data/AI/IIoT/cloud evidence",
+      "Asset technical specs",
+      "Revenue thresholds",
+      "Cybersecurity add-ons"
+    ],
+    "officialUrl": "https://eumis2020.government.bg/en/s/EvalTable/Preview?Gid=70e45424-d2b3-49f9-b3fe-177302f2075e",
+    "sourceId": "euro-programs",
+    "sourceNotes": "Euro-Programs catalogue lists the call parameters; EUMIS evaluation criteria confirm grant thresholds and Industry 4.0 technology scoring.",
+    "lastChecked": "2026-06-08"
+  },
+  {
+    "id": "sofia-fisp-startup-guarantee",
+    "title": "Sofia Municipal Guarantee Fund - FISP for Innovative and Startup Enterprises",
+    "provider": "Sofia Municipal Guarantee Fund for SMEs",
+    "geography": "Sofia Municipality, Bulgaria",
+    "regionType": "Bulgaria",
+    "fundingType": [
+      "Loan guarantee",
+      "Startup support"
+    ],
+    "amount": "Municipal guarantee scheme supporting bank loans for innovative and startup SMEs in Sofia",
+    "maxFundingEur": null,
+    "deadline": null,
+    "status": "rolling",
+    "startupStages": [
+      "MVP",
+      "Early revenue",
+      "Scaleup"
+    ],
+    "sectors": [
+      "AI",
+      "SaaS",
+      "Digital transformation",
+      "Climate tech",
+      "Hardware",
+      "Healthtech"
+    ],
+    "difficulty": "Medium",
+    "eligibilitySummary": "Sofia-based innovative or startup SMEs that need a municipal guarantee to access bank financing for an economically viable project.",
+    "description": "A financial-instrument route rather than a grant. It is useful for startups and SMEs in Sofia that have a viable project but insufficient collateral for a bank loan.",
+    "whoCanApply": [
+      "Innovative or startup SMEs in Sofia Municipality",
+      "Companies with an economically viable project",
+      "Applicants seeking bank financing with insufficient collateral"
+    ],
+    "whoCannotApply": [
+      "Projects without bankability or repayment capacity",
+      "Applicants outside the municipal guarantee scheme rules",
+      "Teams looking only for non-repayable grants"
+    ],
+    "eligibleCosts": [
+      "Project costs financed by partner-bank loans",
+      "Investment and growth expenses accepted by the guarantee scheme",
+      "Working-capital or investment uses allowed by the partner bank"
+    ],
+    "requiredDocuments": [
+      "Online guarantee consultation form",
+      "Company and owner information",
+      "Project description",
+      "Requested loan amount and term",
+      "Collateral information",
+      "Financial reports where requested"
+    ],
+    "evaluationCriteria": [
+      "Economic viability",
+      "SME and Sofia eligibility",
+      "Innovation/startup fit",
+      "Bank credit assessment",
+      "Guarantee scheme compliance"
+    ],
+    "applicationFocus": [
+      "Loan purpose",
+      "Collateral gap",
+      "Repayment capacity",
+      "Innovation claim",
+      "Partner bank fit"
+    ],
+    "officialUrl": "https://ogf-sofia.com/",
+    "sourceId": "sofia-ogf",
+    "sourceNotes": "OGF Sofia lists FISP as a programme for financing innovative and startup enterprises in Sofia and reports aggregate guaranteed loans.",
+    "lastChecked": "2026-06-08"
+  },
+  {
+    "id": "sofia-europe-programme-2026",
+    "title": "Sofia Municipality Europe Programme 2026",
+    "provider": "Sofia Municipal Council / Sofia Municipality",
+    "geography": "Sofia Municipality, Bulgaria",
+    "regionType": "Bulgaria",
+    "fundingType": [
+      "Grant",
+      "Local grant"
+    ],
+    "amount": "Municipal grant programme; funding parameters are set in the Sofia Municipal Council 2026 programme documents",
+    "maxFundingEur": null,
+    "deadline": "2026-03-31",
+    "status": "closed",
+    "startupStages": [
+      "Idea",
+      "Prototype",
+      "MVP"
+    ],
+    "sectors": [
+      "Social innovation",
+      "Climate tech",
+      "Digital transformation",
+      "Healthtech"
+    ],
+    "difficulty": "Medium",
+    "eligibilitySummary": "Sofia civic-sector projects for sustainable development, green urban environment, participation, tourism, prevention, and links with Bulgarian communities abroad.",
+    "description": "A Sofia municipal grant programme for civic and community projects. It is not a pure startup programme, but it is relevant for social-impact and local civic-tech initiatives that work with municipal priorities.",
+    "whoCanApply": [
+      "Eligible civic-sector organisations under the programme rules",
+      "Applicants working with Sofia municipal priorities",
+      "Partnerships with municipal structures where required by a priority area"
+    ],
+    "whoCannotApply": [
+      "Pure commercial startup projects",
+      "Projects outside Sofia Municipality's priority areas",
+      "Applicants unable to execute and report by the programme timetable"
+    ],
+    "eligibleCosts": [
+      "Education and civic participation initiatives",
+      "Green urban environment and healthy lifestyle initiatives",
+      "Cultural, tourism, community, prevention, and inclusion activities"
+    ],
+    "requiredDocuments": [
+      "Programme application forms",
+      "Budget",
+      "Partner documents where applicable",
+      "Activity and reporting plan",
+      "Declarations"
+    ],
+    "evaluationCriteria": [
+      "Fit with one of the 2026 priority areas",
+      "Innovation and sustainability",
+      "Community participation",
+      "Municipal relevance",
+      "Feasibility within the programme timetable"
+    ],
+    "applicationFocus": [
+      "Sofia priority area mapping",
+      "Community participation",
+      "Municipal partner logic",
+      "Clear public benefit",
+      "Execution by 15 November 2026"
+    ],
+    "officialUrl": "https://council.sofia.bg/council/-/asset_publisher/Prvd1GqBLF0E/content/2022912",
+    "sourceId": "sofia-programme-europe",
+    "sourceNotes": "Sofia Municipal Council approved the 2026 priority areas and timetable; application was planned for February-March 2026.",
+    "lastChecked": "2026-06-08"
+  },
+  {
+    "id": "sofia-social-innovations-2026",
+    "title": "Sofia Municipality Social Innovations Programme 2026",
+    "provider": "Sofia Municipality",
+    "geography": "Sofia Municipality, Bulgaria",
+    "regionType": "Bulgaria",
+    "fundingType": [
+      "Grant",
+      "Local grant"
+    ],
+    "amount": "Up to EUR 12,782 per project; 2026 programme budget up to EUR 209,629",
+    "maxFundingEur": 12782,
+    "deadline": "2026-04-06",
+    "status": "closed",
+    "startupStages": [
+      "Idea",
+      "Prototype",
+      "MVP"
+    ],
+    "sectors": [
+      "Social innovation",
+      "Digital transformation",
+      "Healthtech"
+    ],
+    "difficulty": "Low",
+    "eligibilitySummary": "Sofia-based non-profits and community centres implementing short social innovation projects for vulnerable groups; commercial activity is not supported.",
+    "description": "A municipal social-innovation grant for short projects introducing new ideas, processes, or models in Sofia's social policy practice, especially for vulnerable groups.",
+    "whoCanApply": [
+      "Non-profit legal entities based in Sofia Municipality",
+      "Narodni chitalishta based in Sofia Municipality",
+      "Applicants proposing a new-for-Sofia social innovation"
+    ],
+    "whoCannotApply": [
+      "Commercial companies and cooperatives",
+      "Political parties, trade unions, and religious organisations",
+      "Projects supporting economic activity rather than social innovation"
+    ],
+    "eligibleCosts": [
+      "Short-term social innovation project costs",
+      "Activities addressing vulnerable groups",
+      "Project delivery and reporting costs allowed by the procedure"
+    ],
+    "requiredDocuments": [
+      "Project form",
+      "Budget form",
+      "Activity schedule",
+      "Declarations",
+      "Submission by paper/electronic carrier or signed email"
+    ],
+    "evaluationCriteria": [
+      "New social innovation for Sofia Municipality",
+      "Relevance to vulnerable groups",
+      "Feasibility and short-term delivery",
+      "Budget compliance",
+      "Social policy significance"
+    ],
+    "applicationFocus": [
+      "Non-profit eligibility",
+      "Vulnerable group need",
+      "New model in Sofia",
+      "Clear short-term activities",
+      "Non-commercial scope"
+    ],
+    "officialUrl": "https://www.sofia.bg/program-social-innovation",
+    "sourceId": "sofia-social-innovation",
+    "sourceNotes": "Sofia Municipality lists the 2026 application period, EUR 12,782 project cap, and EUR 209,629 programme budget.",
+    "lastChecked": "2026-06-08"
+  },
+  {
+    "id": "bg-step-clean-resource-efficient-technologies-2026",
+    "title": "Support for Clean and Resource-Efficient Technologies of Strategic Importance (STEP)",
+    "provider": "Bulgarian Ministry of Innovation and Growth / PCIE 2021-2027",
+    "geography": "Bulgaria",
+    "regionType": "Bulgaria",
+    "fundingType": [
+      "Grant",
+      "STEP grant"
+    ],
+    "amount": "Planned budget BGN 58.7M; grants BGN 150,000 to BGN 7,000,000, up to 70% intensity",
+    "maxFundingEur": 3579043,
+    "deadline": "2026-12-31",
+    "status": "upcoming",
+    "startupStages": [
+      "Early revenue",
+      "Scaleup",
+      "R&D"
+    ],
+    "sectors": [
+      "Climate tech",
+      "Deep tech",
+      "Hardware",
+      "Robotics",
+      "R&D"
+    ],
+    "difficulty": "High",
+    "eligibilitySummary": "Existing SMEs and larger enterprises investing in clean and resource-efficient technologies within the EU STEP strategic technology scope.",
+    "description": "A planned Bulgarian STEP-aligned route for strategic clean and resource-efficient technologies and related value chains, aimed at reducing EU strategic dependencies.",
+    "whoCanApply": [
+      "Existing SMEs and large enterprises registered as traders or cooperatives",
+      "Applicants investing in STEP-scope clean or resource-efficient technologies",
+      "Companies with a credible industrial or value-chain strengthening project"
+    ],
+    "whoCannotApply": [
+      "Projects outside STEP clean/resource-efficient technology scope",
+      "Applicants without implementation and financing capacity",
+      "Routine efficiency upgrades without strategic technology relevance"
+    ],
+    "eligibleCosts": [
+      "Tangible and intangible assets",
+      "Construction and installation works where eligible",
+      "Services",
+      "Personnel costs allowed by the call"
+    ],
+    "requiredDocuments": [
+      "ISUN application",
+      "STEP technology justification",
+      "Investment budget and supplier logic",
+      "Implementation plan",
+      "Company eligibility documents"
+    ],
+    "evaluationCriteria": [
+      "STEP strategic technology relevance",
+      "Value-chain strengthening",
+      "Clean/resource-efficient impact",
+      "Implementation capacity",
+      "Budget compliance"
+    ],
+    "applicationFocus": [
+      "Strategic dependency reduction",
+      "Industrial roadmap",
+      "Clean technology evidence",
+      "Value-chain role",
+      "Asset and personnel logic"
+    ],
+    "officialUrl": "https://www.mig.government.bg/wp-content/uploads/2026/01/igrp_pcie_2026_change_clean-1.pdf",
+    "sourceId": "mig-pcie",
+    "sourceNotes": "Included in the 2026 PCIE indicative work programme with September-December 2026 timing and BGN 150,000 to BGN 7,000,000 grant range.",
+    "lastChecked": "2026-06-08"
   },
   {
     "id": "bg-startup-visa-2026",
