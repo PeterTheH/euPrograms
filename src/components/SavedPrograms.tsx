@@ -8,7 +8,7 @@ import { deadlineLabel } from "@/lib/program-utils";
 import type { Program } from "@/lib/types";
 
 export function SavedPrograms({ programs }: { programs: Program[] }) {
-  const { t, label } = useLanguage();
+  const { t, label, text, locale } = useLanguage();
   const [savedIds, setSavedIds] = useState<string[]>([]);
 
   useEffect(() => {
@@ -37,13 +37,13 @@ export function SavedPrograms({ programs }: { programs: Program[] }) {
         <article className="program-card" key={program.id}>
           <div className="card-topline">
             <span className={`badge status-${program.status}`}>{label(program.status)}</span>
-            <span className="deadline-pill">{deadlineLabel(program)}</span>
+            <span className="deadline-pill">{deadlineLabel(program, locale)}</span>
           </div>
           <h2>
-            <Link href={`/programs/${program.id}`}>{program.title}</Link>
+            <Link href={`/programs/${program.id}`}>{text(program.title)}</Link>
           </h2>
-          <p className="provider">{program.provider}</p>
-          <p>{program.eligibilitySummary}</p>
+          <p className="provider">{text(program.provider)}</p>
+          <p>{text(program.eligibilitySummary)}</p>
           <div className="card-actions">
             <Link className="button primary" href={`/programs/${program.id}`}>
               {t("common.details")}

@@ -1,7 +1,10 @@
 import { NextResponse } from "next/server";
 import { generateOllamaJson } from "@/lib/ollama";
 import { getProgramById } from "@/lib/programs";
+import { translateText } from "@/lib/localization";
 import type { FounderProfile, Program, SectionDraftResult, SectionReviewResult } from "@/lib/types";
+
+type Locale = "en" | "bg";
 
 type AssistBody = {
   programId?: string;
@@ -12,7 +15,23 @@ type AssistBody = {
   programSpecificNotes?: string[];
   profile?: FounderProfile;
   userText?: string;
+  locale?: Locale;
 };
+
+
+function hasUntranslatedEnglish(value: string): boolean {
+  const withoutAllowedTerms = value
+    .replace(/\b(EU|EIC|EIT|Eurostars|Horizon Europe|JSON|Ollama|AI|IP|ICT|R&D|MVP|SME|SMEs|TRL|ISUN|CO2)\b/g, "")
+    .replace(/\[[^\]]+\]/g, "")
+    .replace(/[A-Z]{2,}[A-Z0-9.-]*/g, "")
+    .replace(/[0-9\s.,:;!?%()[\]{}&+\-/'"’"]/g, "");
+
+  return /[A-Za-z]{3,}/.test(withoutAllowedTerms);
+}
+
+function reviewHasUntranslatedEnglish(result: SectionReviewResult): boolean {
+  return [...result.strengths, ...result.gaps, result.rewrite].some((item) => hasUntranslatedEnglish(item));
+}
 
 export async function POST(request: Request) {
   const body = (await request.json()) as AssistBody;
@@ -21,10 +40,24 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "programId, mode and sectionHeading are required." }, { status: 400 });
   }
 
+  const locale: Locale = body.locale === "bg" ? "bg" : "en";
+
+
+
   const program = await getProgramById(body.programId);
   if (!program) {
     return NextResponse.json({ error: "Program not found." }, { status: 404 });
   }
+
+  const languageInstruction = locale === "bg"
+
+
+    ? "Write every user-facing value in Bulgarian. Keep JSON keys, official programme names, acronyms, URLs, and bracketed placeholders unchanged."
+
+
+    : "Write every user-facing value in English.";
+
+
 
   const sectionContext = {
     programTitle: program.title,
@@ -38,7 +71,8 @@ export async function POST(request: Request) {
     sectionPrompt: body.sectionPrompt ?? "",
     programSpecificNotes: body.programSpecificNotes ?? [],
     founderProfile: body.profile ?? null,
-    projectDescription: body.profile?.projectDescription ?? ""
+    projectDescription: body.profile?.projectDescription ?? "",
+    outputLanguage: locale === "bg" ? "Bulgarian" : "English"
   };
 
   if (body.mode === "draft") {
@@ -48,7 +82,8 @@ export async function POST(request: Request) {
       "Write a concise first-draft for the requested section, in the founder's voice, 120-220 words.",
       "Ground every sentence in the supplied founder profile and project description.",
       "Where a specific fact is unknown, insert a clearly bracketed placeholder like [add metric] instead of inventing it.",
-      "Do not invent deadlines, funding amounts, partners, or eligibility rules."
+      "Do not invent deadlines, funding amounts, partners, or eligibility rules.",
+      languageInstruction
     ].join(" ");
 
     const userPrompt = JSON.stringify(
@@ -57,9 +92,10 @@ export async function POST(request: Request) {
       2
     );
 
-    const fallback: SectionDraftResult = { draft: buildDraftFallback(program, body) };
+    const fallback: SectionDraftResult = { draft: buildDraftFallback(program, body, locale) };
     const result = await generateOllamaJson<SectionDraftResult>(systemPrompt, userPrompt, fallback);
-    const draft = typeof result.data.draft === "string" && result.data.draft.trim() ? result.data.draft : fallback.draft;
+    const generatedDraft = typeof result.data.draft === "string" && result.data.draft.trim() ? result.data.draft : fallback.draft;
+    const draft = locale === "bg" && hasUntranslatedEnglish(generatedDraft) ? fallback.draft : generatedDraft;
     return NextResponse.json({ draft });
   }
 
@@ -68,7 +104,8 @@ export async function POST(request: Request) {
     "Return only valid JSON of the shape { \"strengths\": string[], \"gaps\": string[], \"rewrite\": string }. Do not include markdown.",
     "Judge the founder's text strictly against the programme's evaluation criteria and application focus.",
     "strengths: what already works. gaps: specific, actionable fixes (missing evidence, vague claims, unquantified impact).",
-    "rewrite: a tightened version of the founder's text, same facts, sharper and evaluator-ready. Never invent facts; keep placeholders the founder did not provide."
+    "rewrite: a tightened version of the founder\'s text, same facts, sharper and evaluator-ready. Never invent facts; keep placeholders the founder did not provide.",
+    languageInstruction
   ].join(" ");
 
   const userPrompt = JSON.stringify(
@@ -82,14 +119,16 @@ export async function POST(request: Request) {
     2
   );
 
-  const fallback = buildReviewFallback(program, body);
+  const fallback = buildReviewFallback(program, body, locale);
   const result = await generateOllamaJson<SectionReviewResult>(systemPrompt, userPrompt, fallback);
   const data = result.data;
-  return NextResponse.json({
+  const reviewed: SectionReviewResult = {
     strengths: Array.isArray(data.strengths) ? data.strengths : fallback.strengths,
     gaps: Array.isArray(data.gaps) && data.gaps.length > 0 ? data.gaps : fallback.gaps,
     rewrite: typeof data.rewrite === "string" ? data.rewrite : fallback.rewrite
-  });
+  };
+
+  return NextResponse.json(locale === "bg" && reviewHasUntranslatedEnglish(reviewed) ? fallback : reviewed);
 }
 
 // Best-effort guess of the venture's name from the leading proper noun of the
@@ -153,7 +192,10 @@ function profilePhrases(profile: FounderProfile) {
   };
 }
 
-function buildDraftFallback(program: Program, body: AssistBody): string {
+function buildDraftFallback(program: Program, body: AssistBody, locale: Locale): string {
+  if (locale === "bg") {
+    return buildBulgarianDraftFallback(program, body);
+  }
   const profile = body.profile;
   const description = profile?.projectDescription?.trim() ?? "";
 
@@ -271,7 +313,59 @@ function buildDraftFallback(program: Program, body: AssistBody): string {
   return `${draft}\n\n[Deterministic starting draft generated without Ollama. Replace the bracketed placeholders with confirmed facts, then use Review to sharpen it.]`;
 }
 
-function buildReviewFallback(program: Program, body: AssistBody): SectionReviewResult {
+function buildBulgarianDraftFallback(program: Program, body: AssistBody): string {
+  const profile = body.profile;
+  const description = profile?.projectDescription?.trim() ?? "";
+  const sectionHeading = translateText(body.sectionHeading ?? "раздел", "bg");
+  const programTitle = translateText(program.title, "bg");
+  const provider = translateText(program.provider, "bg");
+
+  if (!profile || !description) {
+    const notes = (body.programSpecificNotes ?? []).map((note) => "- " + translateText(note, "bg")).join("\n");
+    return [
+      "Начална чернова за \"" + sectionHeading + "\" (" + programTitle + ").",
+      body.sectionPrompt ? "\nЦел на раздела: " + translateText(body.sectionPrompt, "bg") : "",
+      notes ? "\nПокрийте следното:\n" + notes : "",
+      "\nДобавете описание на проекта и профил на основателя в проверката, след това генерирайте отново, за да получите написана начална чернова."
+    ]
+      .filter(Boolean)
+      .join("\n");
+  }
+
+  const name = extractVentureName(description);
+  const origin: Record<string, string> = {
+    Bulgaria: "с регистрация в България",
+    EU: "с регистрация в ЕС",
+    "Horizon associated": "от държава, асоциирана към Horizon Europe",
+    "Non-EU": "извън ЕС"
+  };
+  const funding: Record<string, string> = {
+    grant: "грантова подкрепа",
+    equity: "инвестиция",
+    both: "смесено грантово и инвестиционно финансиране",
+    support: "акселераторска и експертна подкрепа"
+  };
+  const mode = profile.applicationMode === "partners" ? "с проектни партньори" : "като самостоятелен кандидат";
+  const applicant = profile.isSme === "yes" ? "МСП" : "компания";
+  const sector = profile.sector ? translateText(profile.sector, "bg") : "технологии";
+  const stage = profile.stage ? translateText(profile.stage, "bg") : "ранен етап";
+  const projectType = profile.projectType ? translateText(profile.projectType, "bg").toLowerCase() : "проекта";
+  const focus = program.applicationFocus.slice(0, 3).map((item) => translateText(item, "bg")).join(", ");
+
+  return [
+    name + " е " + applicant + " " + (origin[profile.companyCountry] ?? "") + ", работеща в сектор " + sector + ", на етап " + stage + ".",
+    "Кандидатстваме по " + programTitle + " (" + provider + ") за " + (funding[profile.fundingNeed] ?? "финансиране") + ", за да развием " + projectType + " " + mode + ".",
+    focus ? "В този раздел трябва ясно да покажем връзката с фокуса на програмата: " + focus + "." : "",
+    "Добавете конкретни доказателства: [метрика], [пилот или клиент], [бюджетна линия] и [очакван резултат]."
+  ]
+    .filter(Boolean)
+    .join(" ") + "\n\n[Детерминистична начална чернова без Ollama. Заменете полетата в скоби с потвърдени факти, след това използвайте прегледа, за да я изчистите.]";
+}
+
+function buildReviewFallback(program: Program, body: AssistBody, locale: Locale): SectionReviewResult {
+  if (locale === "bg") {
+    return buildBulgarianReviewFallback(program, body);
+  }
   const text = (body.userText ?? "").trim();
   const hasText = text.length > 0;
 
@@ -321,6 +415,60 @@ function buildReviewFallback(program: Program, body: AssistBody): SectionReviewR
   const rewrite = [
     tightened,
     focus ? `In evaluator terms, this directly supports ${focus}; quantify that impact with [add metric] to make it land.` : ""
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  return { strengths, gaps, rewrite };
+}
+
+function buildBulgarianReviewFallback(program: Program, body: AssistBody): SectionReviewResult {
+  const text = (body.userText ?? "").trim();
+  const hasText = text.length > 0;
+
+  if (!hasText) {
+    return {
+      strengths: [],
+      gaps: [
+        "Напишете първа чернова преди заявка за преглед или използвайте бутона за чернова, за да генерирате начална версия.",
+        ...program.evaluationCriteria.slice(0, 2).map((criterion) => "Този раздел трябва ясно да адресира: " + translateText(criterion, "bg") + ".")
+      ],
+      rewrite: ""
+    };
+  }
+
+  const wordCount = text.split(/\s+/).filter(Boolean).length;
+  const hasNumbers = /\d/.test(text);
+  const hasPlaceholders = /\[[^\]]+\]/.test(text);
+
+  const strengths: string[] = ["Имате начално съдържание, върху което може да се надгради в този раздел."];
+  if (hasNumbers) {
+    strengths.push("Текстът вече включва конкретни числа, които оценителите търсят.");
+  }
+  if (wordCount >= 80) {
+    strengths.push("Разделът е достатъчно развит, за да изгради съдържателен аргумент.");
+  }
+
+  const gaps: string[] = [];
+  if (!hasNumbers) {
+    gaps.push("Все още няма числа: добавете поне една метрика, резултат от пилот или данни за приходи/използване.");
+  }
+  if (hasPlaceholders) {
+    gaps.push("Попълнете оставащите [полета в скоби] преди подаване; оценителите ги възприемат като липсващи доказателства.");
+  }
+  if (wordCount < 60) {
+    gaps.push("Черновата е кратка; развийте най-силното твърдение с доказателства, вместо да добавяте общи фрази.");
+  }
+  gaps.push("Свържете всяко твърдение с конкретно доказателство: метрика, резултат от пилот, клиент, IP статус или benchmark.");
+  program.evaluationCriteria
+    .slice(0, 2)
+    .forEach((criterion) => gaps.push("Уверете се, че този раздел ясно адресира: " + translateText(criterion, "bg") + "."));
+
+  const focus = program.applicationFocus.slice(0, 2).map((item) => translateText(item, "bg")).join(" и ");
+  const tightened = text.replace(/\s+/g, " ").trim();
+  const rewrite = [
+    tightened,
+    focus ? "От гледна точка на оценителя това директно подкрепя " + focus + "; добавете [метрика], за да направите въздействието убедително." : ""
   ]
     .filter(Boolean)
     .join(" ");

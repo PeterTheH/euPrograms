@@ -1,3 +1,4 @@
+import type { Locale } from "./localization";
 import type { Program } from "./types";
 
 function startOfTodayUtc(): Date {
@@ -5,10 +6,9 @@ function startOfTodayUtc(): Date {
   return new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
 }
 
-
-export function formatDate(value: string | null): string {
+export function formatDate(value: string | null, locale: Locale = "en"): string {
   if (!value) {
-    return "Rolling";
+    return locale === "bg" ? "Постоянен прием" : "Rolling";
   }
 
   const date = new Date(`${value}T00:00:00.000Z`);
@@ -16,7 +16,7 @@ export function formatDate(value: string | null): string {
     return value;
   }
 
-  return new Intl.DateTimeFormat("en-GB", {
+  return new Intl.DateTimeFormat(locale === "bg" ? "bg-BG" : "en-GB", {
     day: "2-digit",
     month: "short",
     year: "numeric",
@@ -37,28 +37,31 @@ export function daysUntilDeadline(program: Program): number | null {
   return Math.ceil((deadline.getTime() - startOfTodayUtc().getTime()) / 86_400_000);
 }
 
-export function deadlineLabel(program: Program): string {
+export function deadlineLabel(program: Program, locale: Locale = "en"): string {
   const days = daysUntilDeadline(program);
 
   if (program.status === "rolling") {
-    return "Rolling";
+    return locale === "bg" ? "Постоянен прием" : "Rolling";
   }
 
   if (days === null) {
-    return formatDate(program.deadline);
+    return formatDate(program.deadline, locale);
   }
 
   if (days < 0) {
-    return "Closed";
+    return locale === "bg" ? "Затворена" : "Closed";
   }
 
   if (days === 0) {
-    return "Today";
+    return locale === "bg" ? "Днес" : "Today";
   }
 
   if (days <= 14) {
+    if (locale === "bg") {
+      return days === 1 ? "1 ден остава" : `${days} дни остават`;
+    }
     return `${days} days left`;
   }
 
-  return formatDate(program.deadline);
+  return formatDate(program.deadline, locale);
 }

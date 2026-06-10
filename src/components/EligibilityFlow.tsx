@@ -34,7 +34,7 @@ export function EligibilityFlow({
   programs: Program[];
   initialProgramId?: string;
 }) {
-  const { t, label } = useLanguage();
+  const { t, label, text, locale } = useLanguage();
   const startingProgramId = programs.some((program) => program.id === initialProgramId)
     ? initialProgramId
     : programs[0]?.id ?? "";
@@ -61,16 +61,16 @@ export function EligibilityFlow({
       const response = await fetch("/api/eligibility", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ programId, profile })
+        body: JSON.stringify({ programId, profile, locale })
       });
 
       if (!response.ok) {
-        throw new Error("Eligibility check failed.");
+        throw new Error(t("errors.eligibilityFailed"));
       }
 
       setEligibility((await response.json()) as EligibilityResult);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Eligibility check failed.");
+      setError(err instanceof Error ? text(err.message) : t("errors.eligibilityFailed"));
     } finally {
       setLoading(null);
     }
@@ -88,12 +88,12 @@ export function EligibilityFlow({
       });
 
       if (!response.ok) {
-        throw new Error("Application pack generation failed.");
+        throw new Error(t("errors.packFailed"));
       }
 
       setPack((await response.json()) as ApplicationPack);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Application pack generation failed.");
+      setError(err instanceof Error ? text(err.message) : t("errors.packFailed"));
     } finally {
       setLoading(null);
     }
@@ -125,7 +125,7 @@ export function EligibilityFlow({
           >
             {programs.map((program) => (
               <option value={program.id} key={program.id}>
-                {program.title}
+                {text(program.title)}
               </option>
             ))}
           </select>
@@ -229,8 +229,8 @@ export function EligibilityFlow({
         {selectedProgram ? (
           <div className="selected-program">
             <span className={`badge status-${selectedProgram.status}`}>{label(selectedProgram.status)}</span>
-            <h2>{selectedProgram.title}</h2>
-            <p>{selectedProgram.eligibilitySummary}</p>
+            <h2>{text(selectedProgram.title)}</h2>
+            <p>{text(selectedProgram.eligibilitySummary)}</p>
           </div>
         ) : null}
 
@@ -242,6 +242,10 @@ export function EligibilityFlow({
       </aside>
     </section>
   );
+}
+
+function capitalizeOptionLabel(value: string) {
+  return value ? value.charAt(0).toLocaleUpperCase() + value.slice(1) : value;
 }
 
 function FormSelect({
@@ -264,7 +268,7 @@ function FormSelect({
         <option value="">{t("form.select")}</option>
         {options.map((option) => (
           <option value={option} key={option}>
-            {translateLabel(option)}
+            {capitalizeOptionLabel(translateLabel(option))}
           </option>
         ))}
       </select>
@@ -302,7 +306,7 @@ function ApplicationPackPanel({
   programId: string;
   profile: FounderProfile;
 }) {
-  const { t } = useLanguage();
+  const { t, text, locale } = useLanguage();
   const [answers, setAnswers] = useState<Record<string, string>>({});
 
   function setAnswer(key: string, value: string) {
@@ -314,13 +318,13 @@ function ApplicationPackPanel({
       <div className="pack-header">
         <div>
           <p className="eyebrow">{t("pack.eyebrow")}</p>
-          <h2>{pack.programTitle} {t("pack.titleSuffix")}</h2>
+          <h2>{text(pack.programTitle)} {t("pack.titleSuffix")}</h2>
         </div>
         <button
           className="button primary"
           type="button"
           onClick={() => {
-            void downloadApplicationPackPdf(pack, answers, t("pack.titleSuffix"));
+            void downloadApplicationPackPdf(pack, answers, t("pack.titleSuffix"), text, t("pack.generated"), t("pack.checklist"), locale);
           }}
         >
           {t("pack.download")}
@@ -334,8 +338,8 @@ function ApplicationPackPanel({
       <div className="documents-list">
         {pack.documents.map((document) => (
           <article className="document-card" key={document.title}>
-            <h3>{document.title}</h3>
-            <p>{document.purpose}</p>
+            <h3>{text(document.title)}</h3>
+            <p>{text(document.purpose)}</p>
             {document.sections.map((section) => {
               const key = sectionKey(document.title, section.heading);
               return (
@@ -358,10 +362,10 @@ function ApplicationPackPanel({
         <h3>{t("pack.tips")}</h3>
         {pack.applicationTips.map((tip) => (
           <article key={tip.title}>
-            <h4>{tip.title}</h4>
-            <p>{tip.detail}</p>
+            <h4>{text(tip.title)}</h4>
+            <p>{text(tip.detail)}</p>
             <a href={tip.sourceUrl} target="_blank" rel="noreferrer">
-              {tip.sourceRequirement}
+              {text(tip.sourceRequirement)}
             </a>
           </article>
         ))}
@@ -371,7 +375,7 @@ function ApplicationPackPanel({
         <h3>{t("pack.checklist")}</h3>
         <ul>
           {pack.checklist.map((item) => (
-            <li key={item}>{item}</li>
+            <li key={item}>{text(item)}</li>
           ))}
         </ul>
       </div>
@@ -394,7 +398,7 @@ function DocumentSectionEditor({
   value: string;
   onChange: (value: string) => void;
 }) {
-  const { t } = useLanguage();
+  const { t, text, locale } = useLanguage();
   const [busy, setBusy] = useState<"draft" | "review" | null>(null);
   const [review, setReview] = useState<SectionReviewResult | null>(null);
 
@@ -412,7 +416,8 @@ function DocumentSectionEditor({
           sectionPrompt: section.prompt,
           programSpecificNotes: section.programSpecificNotes,
           profile,
-          userText: value
+          userText: value,
+          locale
         })
       });
 
@@ -437,14 +442,14 @@ function DocumentSectionEditor({
 
   return (
     <div className="document-section">
-      <h4>{section.heading}</h4>
-      <p className="section-guidance">{section.prompt}</p>
+      <h4>{text(section.heading)}</h4>
+      <p className="section-guidance">{text(section.prompt)}</p>
       {section.programSpecificNotes.length > 0 ? (
-        <ul>
+        <div className="section-notes">
           {section.programSpecificNotes.map((note) => (
-            <li key={note}>{note}</li>
+            <p className="section-note" key={note}>- {text(note)}</p>
           ))}
-        </ul>
+        </div>
       ) : null}
 
       <textarea
@@ -476,8 +481,8 @@ function DocumentSectionEditor({
           {review.rewrite ? (
             <div className="review-rewrite">
               <h5>{t("section.rewrite")}</h5>
-              <p>{review.rewrite}</p>
-              <button className="button ghost" type="button" onClick={() => onChange(review.rewrite)}>
+              <p>{text(review.rewrite)}</p>
+              <button className="button ghost" type="button" onClick={() => onChange(text(review.rewrite))}>
                 {t("section.useRewrite")}
               </button>
             </div>
@@ -489,12 +494,14 @@ function DocumentSectionEditor({
 }
 
 function ReviewList({ title, items }: { title: string; items: string[] }) {
+  const { text } = useLanguage();
+
   return (
     <div className="review-block">
       <h5>{title}</h5>
       <ul>
         {items.map((item) => (
-          <li key={item}>{item}</li>
+          <li key={item}>{text(item)}</li>
         ))}
       </ul>
     </div>
@@ -502,12 +509,14 @@ function ReviewList({ title, items }: { title: string; items: string[] }) {
 }
 
 function ResultList({ title, items }: { title: string; items: string[] }) {
+  const { text } = useLanguage();
+
   return (
     <div className="result-list">
       <h3>{title}</h3>
       <ul>
         {items.map((item) => (
-          <li key={item}>{item}</li>
+          <li key={item}>{text(item)}</li>
         ))}
       </ul>
     </div>
@@ -531,7 +540,11 @@ function slugify(value: string): string {
 async function downloadApplicationPackPdf(
   pack: ApplicationPack,
   answers: Record<string, string>,
-  titleSuffix: string
+  titleSuffix: string,
+  translate: (value: string) => string,
+  generatedLabel: string,
+  checklistTitle: string,
+  locale: "en" | "bg"
 ) {
   const { jsPDF } = await import("jspdf");
   const doc = new jsPDF({ unit: "pt", format: "a4" });
@@ -577,8 +590,8 @@ async function downloadApplicationPackPdf(
     y += gapAfter;
   }
 
-  writeBlock(`${pack.programTitle} ${titleSuffix}`, { size: 20, style: "bold", gapAfter: 4 });
-  writeBlock(`GrantForge — generated ${new Date(pack.generatedAt).toLocaleDateString()}`, {
+  writeBlock(`${translate(pack.programTitle)} ${titleSuffix}`, { size: 20, style: "bold", gapAfter: 4 });
+  writeBlock(`GrantForge — ${generatedLabel} ${new Date(pack.generatedAt).toLocaleDateString(locale === "bg" ? "bg-BG" : "en-GB")}`, {
     size: 10,
     style: "normal",
     color: 120,
@@ -586,11 +599,11 @@ async function downloadApplicationPackPdf(
   });
 
   for (const document of pack.documents) {
-    writeBlock(document.title, { size: 15, style: "bold", gapBefore: 10, gapAfter: 2 });
-    writeBlock(document.purpose, { size: 10, style: "italic", color: 90, gapAfter: 8 });
+    writeBlock(translate(document.title), { size: 15, style: "bold", gapBefore: 10, gapAfter: 2 });
+    writeBlock(translate(document.purpose), { size: 10, style: "italic", color: 90, gapAfter: 8 });
 
     for (const section of document.sections) {
-      writeBlock(section.heading, { size: 12, style: "bold", gapBefore: 4, gapAfter: 3 });
+      writeBlock(translate(section.heading), { size: 12, style: "bold", gapBefore: 4, gapAfter: 3 });
       const answer = answers[sectionKey(document.title, section.heading)]?.trim();
       if (answer) {
         writeBlock(answer, { size: 11, style: "normal", gapAfter: 8 });
@@ -601,9 +614,9 @@ async function downloadApplicationPackPdf(
     }
   }
 
-  writeBlock("Supporting document checklist", { size: 15, style: "bold", gapBefore: 12, gapAfter: 4 });
+  writeBlock(checklistTitle, { size: 15, style: "bold", gapBefore: 12, gapAfter: 4 });
   for (const item of pack.checklist) {
-    writeBlock(`•  ${item}`, { size: 11, style: "normal", gapAfter: 2 });
+    writeBlock(`•  ${translate(item)}`, { size: 11, style: "normal", gapAfter: 2 });
   }
 
   doc.save(`${slugify(pack.programTitle)}-application-pack.pdf`);

@@ -28,7 +28,7 @@ const defaultFilters: FilterState = {
 };
 
 export function ProgramExplorer({ programs }: { programs: Program[] }) {
-  const { t, label } = useLanguage();
+  const { t, label, text, locale } = useLanguage();
   const [query, setQuery] = useState("");
   const [filters, setFilters] = useState<FilterState>(defaultFilters);
 
@@ -43,12 +43,19 @@ export function ProgramExplorer({ programs }: { programs: Program[] }) {
     return programs.filter((program) => {
       const haystack = [
         program.title,
+        text(program.title),
         program.provider,
+        text(program.provider),
         program.description,
+        text(program.description),
         program.eligibilitySummary,
+        text(program.eligibilitySummary),
         ...program.sectors,
         ...program.fundingType,
-        ...program.startupStages
+        ...program.startupStages,
+        ...program.sectors.map(label),
+        ...program.fundingType.map(label),
+        ...program.startupStages.map(label)
       ]
         .join(" ")
         .toLowerCase();
@@ -66,11 +73,11 @@ export function ProgramExplorer({ programs }: { programs: Program[] }) {
         (!filters.highFunding || (program.maxFundingEur !== null && program.maxFundingEur >= 1000000))
       );
     });
-  }, [filters, programs, query]);
+  }, [filters, label, programs, query, text]);
 
   return (
     <section className="explorer-layout">
-      <aside className="filter-panel" aria-label="Program filters">
+      <aside className="filter-panel" aria-label={t("filters.title")}>
         <div className="filter-header">
           <h2>{t("filters.title")}</h2>
           <button className="link-button" type="button" onClick={() => setFilters(defaultFilters)}>
@@ -114,7 +121,7 @@ export function ProgramExplorer({ programs }: { programs: Program[] }) {
             <input
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="AI, EIC, Bulgarian, cybersecurity..."
+              placeholder={t("search.placeholder")}
             />
           </label>
           <div className="result-count">{filteredPrograms.length} {t("common.programmes")}</div>
@@ -126,23 +133,23 @@ export function ProgramExplorer({ programs }: { programs: Program[] }) {
               <div className="card-topline">
                 <span className={`badge status-${program.status}`}>{label(program.status)}</span>
                 <span className="badge">{label(program.regionType)}</span>
-                <span className="deadline-pill">{deadlineLabel(program)}</span>
+                <span className="deadline-pill">{deadlineLabel(program, locale)}</span>
               </div>
 
               <h2>
-                <Link href={`/programs/${program.id}`}>{program.title}</Link>
+                <Link href={`/programs/${program.id}`}>{text(program.title)}</Link>
               </h2>
-              <p className="provider">{program.provider}</p>
-              <p>{program.eligibilitySummary}</p>
+              <p className="provider">{text(program.provider)}</p>
+              <p>{text(program.eligibilitySummary)}</p>
 
               <dl className="card-facts">
                 <div>
                   <dt>{t("common.funding")}</dt>
-                  <dd>{program.amount}</dd>
+                  <dd>{text(program.amount)}</dd>
                 </div>
                 <div>
                   <dt>{t("common.deadline")}</dt>
-                  <dd>{formatDate(program.deadline)}</dd>
+                  <dd>{formatDate(program.deadline, locale)}</dd>
                 </div>
                 <div>
                   <dt>{t("common.stage")}</dt>
@@ -177,6 +184,10 @@ export function ProgramExplorer({ programs }: { programs: Program[] }) {
   );
 }
 
+function capitalizeOptionLabel(value: string) {
+  return value ? value.charAt(0).toLocaleUpperCase() + value.slice(1) : value;
+}
+
 function FilterSelect({
   label,
   value,
@@ -197,7 +208,7 @@ function FilterSelect({
         <option value="all">{t("common.all")}</option>
         {options.map((option) => (
           <option value={option} key={option}>
-            {translateLabel(option)}
+            {capitalizeOptionLabel(translateLabel(option))}
           </option>
         ))}
       </select>

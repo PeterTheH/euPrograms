@@ -15,7 +15,7 @@ export function ProgramDetailClient({
   similar: Program[];
   tips: ApplicationTip[];
 }) {
-  const { t, label } = useLanguage();
+  const { t, label, text, texts, locale } = useLanguage();
 
   return (
     <main className="page-shell detail-shell">
@@ -32,22 +32,22 @@ export function ProgramDetailClient({
               <span className="badge" key={type}>{label(type)}</span>
             ))}
           </div>
-          <h1>{program.title}</h1>
-          <p>{program.description}</p>
+          <h1>{text(program.title)}</h1>
+          <p>{text(program.description)}</p>
         </div>
         <aside className="detail-facts" aria-label={t("detail.facts")}>
           <dl>
             <div>
               <dt>{t("common.provider")}</dt>
-              <dd>{program.provider}</dd>
+              <dd>{text(program.provider)}</dd>
             </div>
             <div>
               <dt>{t("common.deadline")}</dt>
-              <dd>{deadlineLabel(program)} ({formatDate(program.deadline)})</dd>
+              <dd>{deadlineLabel(program, locale)} ({formatDate(program.deadline, locale)})</dd>
             </div>
             <div>
               <dt>{t("common.funding")}</dt>
-              <dd>{program.amount}</dd>
+              <dd>{text(program.amount)}</dd>
             </div>
             <div>
               <dt>{t("common.difficulty")}</dt>
@@ -67,12 +67,12 @@ export function ProgramDetailClient({
       </section>
 
       <section className="detail-grid">
-        <InfoSection title={t("detail.canApply")} items={program.whoCanApply} />
-        <InfoSection title={t("detail.cannotApply")} items={program.whoCannotApply} />
-        <InfoSection title={t("detail.eligibleCosts")} items={program.eligibleCosts} />
-        <InfoSection title={t("detail.requiredDocs")} items={program.requiredDocuments} />
-        <InfoSection title={t("detail.selectionCriteria")} items={program.evaluationCriteria} />
-        <InfoSection title={t("detail.applicationFocus")} items={program.applicationFocus} />
+        <InfoSection title={t("detail.canApply")} items={texts(program.whoCanApply)} />
+        <InfoSection title={t("detail.cannotApply")} items={texts(program.whoCannotApply)} />
+        <InfoSection title={t("detail.eligibleCosts")} items={texts(program.eligibleCosts)} />
+        <InfoSection title={t("detail.requiredDocs")} items={texts(program.requiredDocuments)} />
+        <InfoSection title={t("detail.selectionCriteria")} items={texts(program.evaluationCriteria)} />
+        <InfoSection title={t("detail.applicationFocus")} items={texts(program.applicationFocus)} />
       </section>
 
       <section className="content-section">
@@ -83,9 +83,9 @@ export function ProgramDetailClient({
         <div className="tips-grid">
           {tips.map((tip) => (
             <article className="tip-card" key={tip.title}>
-              <h3>{tip.title}</h3>
-              <p>{tip.detail}</p>
-              <a href={tip.sourceUrl} target="_blank" rel="noreferrer">{tip.sourceRequirement}</a>
+              <h3>{text(tip.title)}</h3>
+              <p>{text(tip.detail)}</p>
+              <a href={tip.sourceUrl} target="_blank" rel="noreferrer">{text(tip.sourceRequirement)}</a>
             </article>
           ))}
         </div>
@@ -99,8 +99,8 @@ export function ProgramDetailClient({
         <div className="compact-program-list">
           {similar.map((item) => (
             <Link href={`/programs/${item.id}`} key={item.id}>
-              <span>{item.title}</span>
-              <small>{item.provider}</small>
+              <span>{text(item.title)}</span>
+              <small>{text(item.provider)}</small>
             </Link>
           ))}
         </div>

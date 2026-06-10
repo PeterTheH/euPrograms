@@ -5,7 +5,7 @@ import { useLanguage } from "./LanguageProvider";
 import type { SourceStatus } from "@/lib/types";
 
 export function SourceMonitor({ initialSources }: { initialSources: SourceStatus[] }) {
-  const { t, label } = useLanguage();
+  const { t, label, text } = useLanguage();
   const [sources, setSources] = useState(initialSources);
   const [refreshing, setRefreshing] = useState(false);
   const [message, setMessage] = useState("");
@@ -17,14 +17,14 @@ export function SourceMonitor({ initialSources }: { initialSources: SourceStatus
     try {
       const response = await fetch("/api/sources/refresh", { method: "POST" });
       if (!response.ok) {
-        throw new Error("Source refresh failed.");
+        throw new Error(t("sources.failed"));
       }
 
       const data = (await response.json()) as { sources: SourceStatus[] };
       setSources(data.sources);
       setMessage(t("sources.complete"));
     } catch (error) {
-      setMessage(error instanceof Error ? error.message : t("sources.failed"));
+      setMessage(error instanceof Error ? text(error.message) : t("sources.failed"));
     } finally {
       setRefreshing(false);
     }
@@ -56,17 +56,17 @@ export function SourceMonitor({ initialSources }: { initialSources: SourceStatus
               <tr key={source.id}>
                 <td>
                   <a href={source.url} target="_blank" rel="noreferrer">
-                    {source.name}
+                    {text(source.name)}
                   </a>
                 </td>
                 <td>
                   <span className={`badge source-${source.status}`}>{label(source.status)}</span>
-                  {source.lastError ? <small>{source.lastError}</small> : null}
+                  {source.lastError ? <small>{text(source.lastError)}</small> : null}
                 </td>
                 <td>{source.lastChecked}</td>
                 <td>{source.newPrograms}</td>
-                <td>{source.method}</td>
-                <td>{source.notes}</td>
+                <td>{text(source.method)}</td>
+                <td>{text(source.notes)}</td>
               </tr>
             ))}
           </tbody>
